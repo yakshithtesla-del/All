@@ -43,3 +43,7 @@ After that, engineers had to sign and seal their plans, and inspectors had to ch
 The tank is gone. Its concrete floor is still there, twenty inches under a baseball diamond.
 
 On hot days, the whole park smells like molasses.
+
+## Render note
+
+CI render: 540x960 fast mode (ink + NEUTRAL tone map + grade), ~4-5 h on GitHub 2-core runner. Local 2K render available with `npx remotion render src/index.ts MolassesShort out/molasses/video.mp4 --scale 1.3333` (no `fast` prop).

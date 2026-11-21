@@ -2,6 +2,8 @@ name: Render Molasses Short (CI fast 540x960)
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
 
 concurrency:
   group: molasses-render

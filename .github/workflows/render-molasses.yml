@@ -30,8 +30,10 @@ jobs:
       - name: Install system deps for Remotion / Chrome
         run: |
           sudo apt-get update -qq
+          # Ubuntu 24.04 renamed libasound2 -> libasound2t64
+          ALSA=$(apt-cache show libasound2t64 >/dev/null 2>&1 && echo libasound2t64 || echo libasound2)
           sudo apt-get install -y -qq \
-            libnss3 libatk-bridge2.0-0 libgtk-3-0 libgbm1 libasound2 \
+            libnss3 libatk-bridge2.0-0 libgtk-3-0 libgbm1 "$ALSA" \
             libxss1 libx11-xcb1 libxcomposite1 libxdamage1 libxrandr2 \
             libpango-1.0-0 libcairo2 libatspi2.0-0 libcups2 libdrm2 \
             ffmpeg

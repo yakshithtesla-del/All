@@ -1,0 +1,20 @@
+node_modules/
+out/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
+remotion-webpack-bundle-*
+puppeteer_dev_chrome_profile-*
+# local scratch / secrets (hi.txt is a private SSH key)
+hi.txt
+hi.txt.pub
+PROMPT.txt
+build/
+audio/_cache/
+# generated stems are regenerable and only bloat the repo
+public/audio/stem_*.wav
+public/molasses/audio/stem_*.wav

@@ -1,0 +1,1 @@
+/home/codespace/.config/opencode/skills/cartoon-3d-short/templates/audio/sfx_gen.py

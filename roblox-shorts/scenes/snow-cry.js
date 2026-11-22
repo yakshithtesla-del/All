@@ -120,7 +120,7 @@ export default {
     })
     const buses = []
     for (let i = 0; i < 3; i++) {
-      const b = model('yellow-school-bus-0fd3b6', { height: 5.4 }); b.position.set(P.hill - 7 + i * 6.5, -0.1, -13); b.rotation.y = D(90); b.visible = false; scene.add(b); buses.push(b)
+      const b = model('yellow-school-bus-0fd3b6', { height: 4.6 }); b.position.set(P.hill - 10 + i * 10, -0.1, -13); b.rotation.y = D(90); b.visible = false; scene.add(b); buses.push(b)
     }
     const snowHeap = new T.Group()
     for (let i = 0; i < 7; i++) {
@@ -224,6 +224,7 @@ export default {
       // So nobody here cries. We chew gum at sad movies.
       place = 'room'
       const n = cut('cries', 'movies'); d.show(v1, P.room - 2.4, 0, 2, 0, n ? 'bored' : 'neutral'); d.show(v2, P.room + 2.4, 0, 2, 0, n ? 'sleep' : 'neutral')
+      d.allowEmpty() // a room insert with no speaker on screen
       if (n === 0) d.camFree([P.room, 4.4, 12], [P.room, 3.9, -3], 50, null)
       else { d.camFree([P.room + 0.4, 4.3, 11], [P.room, 3.8, -3], 48, null); d.burst('notes', 'movies', [P.room, 5, -8], { n: 6, size: 0.5, spread: 2 }) }
     } else if (k === 4) {
@@ -302,7 +303,7 @@ export default {
       const n = cut('tear', 'plate'); d.show(kid, P.hill, 0, 6, 0, 'sad'); d.talk(kid)
       S.cloudSmall.visible = true; S.cloudSmall.scale.setScalar(n === 2 ? 0.5 : 0.28); S.cloudSmall.position.set(P.hill, 6.8, 6)
       if (n < 2) d.shot('face', kid, { side: -14 })
-      else { d.big(1); d.cam([P.hill + 4, 5.4, 13], [P.hill, 6.2, 6], 48, null) }
+      else { d.big(1); d.shot('medium', kid, { side: -18 }) }
     } else if (k === 15) {
       // My goldfish. A flurry. It buried 3 bushes.
       place = 'hill'; mode = 'dusk'
@@ -312,7 +313,7 @@ export default {
       for (const b of S.bushes) b.visible = true
       d.burst('feathers', 'flurry', [P.hill, 4, -1.5], { n: 18, size: 0.8, color: '#ffffff', spread: 5, floor: 0 })
       if (n < 2) d.shot('face', kid, { side: 16 })
-      else { d.cam([P.hill + 5, 4.6, 13], [P.hill, 4.2, 0], 50, null) }
+      else { d.shot('medium', kid, { side: 18 }) }
     } else if (k === 16) {
       // The pigeons. A cloud that swallowed 10 cars.
       place = 'hill'; mode = 'dusk'
@@ -438,6 +439,9 @@ export default {
       f.rotation.y = Math.sin(t * 5 + i) * 0.2
     }
     S.L.step(t)
+    // Town extras belong to the plaza only. Off-plaza they are invisible and must not
+    // take part in the collision or framing checks (they were brushing arms at the hill).
+    for (const p of S.L.people) p.root.visible = place === 'plaza'
     setPlace(place, mode, S.look)
     d.done()
   },

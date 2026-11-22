@@ -77,4 +77,5 @@ jobs:
 
       - name: Report render time
         if: always()
-        run: echo "Render step: ${{ steps.render.outputs.render_seconds || 'n/a' }} seconds"
+        run: |
+          echo "Render step: ${{ steps.render.outputs.render_seconds || 'n/a' }} seconds"

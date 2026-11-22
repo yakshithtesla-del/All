@@ -3,7 +3,7 @@ name: Render Snow Cry Short (GitHub Actions)
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [main, render/snow-cry]
     paths:
       - 'roblox-shorts/**'
       - '.github/workflows/render-snow-cry.yml'

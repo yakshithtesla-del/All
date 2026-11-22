@@ -1,0 +1,81 @@
+name: Render Part 1 - The Thing Outside (CI fast 540x960)
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: part1-render
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Start timer
+        id: timer
+        run: echo "start=$(date +%s)" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install system deps for Remotion / Chrome
+        run: |
+          sudo apt-get update -qq
+          ALSA=$(apt-cache show libasound2t64 >/dev/null 2>&1 && echo libasound2t64 || echo libasound2)
+          sudo apt-get install -y -qq \
+            libnss3 libatk-bridge2.0-0 libgtk-3-0 libgbm1 "$ALSA" \
+            libxss1 libx11-xcb1 libxcomposite1 libxdamage1 libxrandr2 \
+            libpango-1.0-0 libcairo2 libatspi2.0-0 libcups2 libdrm2 \
+            ffmpeg
+
+      - name: Install npm packages
+        run: npm ci --no-audit --no-fund
+
+      - name: Ensure Chrome Headless Shell
+        run: npx remotion browser ensure
+
+      - name: Render Part 1 MP4 (fast mode)
+        id: render
+        env:
+          TEMP: ${{ runner.temp }}/remotion-tmp
+          TMP: ${{ runner.temp }}/remotion-tmp
+        run: |
+          mkdir -p "$TEMP" out/part1
+          echo "GPU: $(nvidia-smi -L 2>/dev/null || echo 'none (software SwiftShader)')"
+          START=$(date +%s)
+          npx remotion render src/index.ts Part1Short out/part1/video.mp4 \
+            --codec h264 --crf 18 --scale 0.5 --jpeg-quality 90 \
+            --concurrency 2 --gl swiftshader --log-level error \
+            --props='{"fast":true}'
+          RC=$?
+          END=$(date +%s)
+          echo "render_seconds=$((END-START))" >> "$GITHUB_OUTPUT"
+          echo "Render finished in $((END-START)) seconds (exit $RC)"
+          exit $RC
+
+      - name: Verify output
+        run: |
+          ls -lh out/part1/video.mp4
+          ffprobe -v error -show_entries format=duration,size:stream=codec_name,width,height,sample_rate,channels \
+            -of default=nw=1 out/part1/video.mp4
+
+      - name: Upload MP4 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: part1-the-thing-outside-540x960
+          path: out/part1/video.mp4
+          retention-days: 7
+          if-no-files-found: error
+
+      - name: Report total time
+        if: always()
+        run: |
+          echo "Render step: ${{ steps.render.outputs.render_seconds || 'n/a' }} seconds"
+          echo "Total job: $(($(date +%s) - ${{ steps.timer.outputs.start }})) seconds"

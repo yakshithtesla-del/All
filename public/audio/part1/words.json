@@ -1,0 +1,1768 @@
+{
+ "voice": "en-US-AndrewMultilingualNeural",
+ "rate": "+11%",
+ "sentences": [
+  {
+   "text": "He was halfway through the last box of peaches when the store went quiet.",
+   "start": 0.05,
+   "end": 3.4121621
+  },
+  {
+   "text": "Not silent.",
+   "start": 3.4121621,
+   "end": 4.4369368
+  },
+  {
+   "text": "Quiet.",
+   "start": 4.4369368,
+   "end": 5.18018
+  },
+  {
+   "text": "The refrigerator hum, the radio low behind the register, the rain ticking on the skylights.",
+   "start": 5.1801801,
+   "end": 11.0923421
+  },
+  {
+   "text": "Nineteen years old, alone on the closing shift, and a rent payment he couldn't make.",
+   "start": 11.0923421,
+   "end": 15.5968465
+  },
+  {
+   "text": "He finished the row, taped the carton shut, and walked across the store to restock the other side.",
+   "start": 15.5968466,
+   "end": 20.7770267
+  },
+  {
+   "text": "The automatic glass doors were on his way.",
+   "start": 20.7770267,
+   "end": 22.9279275
+  },
+  {
+   "text": "Through them, the parking lot was a black mirror.",
+   "start": 22.9279276,
+   "end": 25.664414
+  },
+  {
+   "text": "And something in it was moving.",
+   "start": 25.664414,
+   "end": 27.6238734
+  },
+  {
+   "text": "A man, or what used to be a man, in a green coat, limping.",
+   "start": 27.6238735,
+   "end": 31.4639635
+  },
+  {
+   "text": "He was pressed against a parked car, slamming one hand into the window.",
+   "start": 31.4639635,
+   "end": 35.4729724
+  },
+  {
+   "text": "Again.",
+   "start": 35.4729725,
+   "end": 36.2387382
+  },
+  {
+   "text": "And again.",
+   "start": 36.2387382,
+   "end": 37.049549
+  },
+  {
+   "text": "The same motion every time, like a machine that had forgotten how to stop.",
+   "start": 37.049549,
+   "end": 41.0472966
+  },
+  {
+   "text": "The stocker set down the box.",
+   "start": 41.0472967,
+   "end": 42.7590083
+  },
+  {
+   "text": "He walked to the glass.",
+   "start": 42.7590084,
+   "end": 44.0653146
+  },
+  {
+   "text": "Up close, the details were worse.",
+   "start": 44.0653147,
+   "end": 46.3851344
+  },
+  {
+   "text": "Skin the colour of old leaves.",
+   "start": 46.3851345,
+   "end": 48.434684
+  },
+  {
+   "text": "A jaw hanging wrong.",
+   "start": 48.434684,
+   "end": 49.729729
+  },
+  {
+   "text": "Eyes that didn't look at anything.",
+   "start": 49.729729,
+   "end": 51.3400893
+  },
+  {
+   "text": "Rain running off him in sheets, and he didn't seem to feel it.",
+   "start": 51.3400894,
+   "end": 54.5045037
+  },
+  {
+   "text": "The thing turned.",
+   "start": 54.5045038,
+   "end": 55.6306299
+  },
+  {
+   "text": "He ran for the shutter controls beside the door and hit the button.",
+   "start": 55.6306299,
+   "end": 58.8851343
+  },
+  {
+   "text": "The steel shutter came down with a scream of metal, slow, too slow, grinding toward the floor while the thing outside turned toward the sound.",
+   "start": 58.8851343,
+   "end": 66.9932423
+  },
+  {
+   "text": "Six seconds.",
+   "start": 66.9932423,
+   "end": 68.1756747
+  },
+  {
+   "text": "That's how long it takes a steel shutter to seal a supermarket.",
+   "start": 68.1756747,
+   "end": 71.4189179
+  },
+  {
+   "text": "He counted every one of them.",
+   "start": 71.4189179,
+   "end": 72.9954944
+  },
+  {
+   "text": "When it finally hit the floor, the parking lot went dark and the store stayed bright.",
+   "start": 72.9954945,
+   "end": 77.2747737
+  },
+  {
+   "text": "For the first time that night, he was safe.",
+   "start": 77.2747737,
+   "end": 79.3918907
+  },
+  {
+   "text": "Then the thing outside looked up at the camera.",
+   "start": 79.3918908,
+   "end": 81.8355844
+  }
+ ],
+ "words": [
+  {
+   "word": "He",
+   "start": 0.05,
+   "end": 0.162
+  },
+  {
+   "word": "was",
+   "start": 0.162,
+   "end": 0.33
+  },
+  {
+   "word": "halfway",
+   "start": 0.33,
+   "end": 0.722
+  },
+  {
+   "word": "through",
+   "start": 0.722,
+   "end": 1.115
+  },
+  {
+   "word": "the",
+   "start": 1.115,
+   "end": 1.283
+  },
+  {
+   "word": "last",
+   "start": 1.283,
+   "end": 1.507
+  },
+  {
+   "word": "box",
+   "start": 1.507,
+   "end": 1.675
+  },
+  {
+   "word": "of",
+   "start": 1.675,
+   "end": 1.787
+  },
+  {
+   "word": "peaches",
+   "start": 1.787,
+   "end": 2.179
+  },
+  {
+   "word": "when",
+   "start": 2.179,
+   "end": 2.404
+  },
+  {
+   "word": "the",
+   "start": 2.404,
+   "end": 2.572
+  },
+  {
+   "word": "store",
+   "start": 2.572,
+   "end": 2.852
+  },
+  {
+   "word": "went",
+   "start": 2.852,
+   "end": 3.076
+  },
+  {
+   "word": "quiet",
+   "start": 3.076,
+   "end": 3.356
+  },
+  {
+   "word": ".",
+   "start": 3.356,
+   "end": 3.412
+  },
+  {
+   "word": "Not",
+   "start": 3.412,
+   "end": 3.72
+  },
+  {
+   "word": "silent",
+   "start": 3.72,
+   "end": 4.334
+  },
+  {
+   "word": ".",
+   "start": 4.334,
+   "end": 4.437
+  },
+  {
+   "word": "Quiet",
+   "start": 4.437,
+   "end": 5.056
+  },
+  {
+   "word": ".",
+   "start": 5.056,
+   "end": 5.18
+  },
+  {
+   "word": "The",
+   "start": 5.18,
+   "end": 5.411
+  },
+  {
+   "word": "refrigerator",
+   "start": 5.411,
+   "end": 6.332
+  },
+  {
+   "word": "hum",
+   "start": 6.332,
+   "end": 6.562
+  },
+  {
+   "word": ",",
+   "start": 6.562,
+   "end": 6.639
+  },
+  {
+   "word": "the",
+   "start": 6.639,
+   "end": 6.869
+  },
+  {
+   "word": "radio",
+   "start": 6.869,
+   "end": 7.253
+  },
+  {
+   "word": "low",
+   "start": 7.253,
+   "end": 7.484
+  },
+  {
+   "word": "behind",
+   "start": 7.484,
+   "end": 7.944
+  },
+  {
+   "word": "the",
+   "start": 7.944,
+   "end": 8.175
+  },
+  {
+   "word": "register",
+   "start": 8.175,
+   "end": 8.789
+  },
+  {
+   "word": ",",
+   "start": 8.789,
+   "end": 8.866
+  },
+  {
+   "word": "the",
+   "start": 8.866,
+   "end": 9.096
+  },
+  {
+   "word": "rain",
+   "start": 9.096,
+   "end": 9.403
+  },
+  {
+   "word": "ticking",
+   "start": 9.403,
+   "end": 9.941
+  },
+  {
+   "word": "on",
+   "start": 9.941,
+   "end": 10.094
+  },
+  {
+   "word": "the",
+   "start": 10.094,
+   "end": 10.325
+  },
+  {
+   "word": "skylights",
+   "start": 10.325,
+   "end": 11.016
+  },
+  {
+   "word": ".",
+   "start": 11.016,
+   "end": 11.092
+  },
+  {
+   "word": "Nineteen",
+   "start": 11.092,
+   "end": 11.607
+  },
+  {
+   "word": "years",
+   "start": 11.607,
+   "end": 11.929
+  },
+  {
+   "word": "old",
+   "start": 11.929,
+   "end": 12.122
+  },
+  {
+   "word": ",",
+   "start": 12.122,
+   "end": 12.186
+  },
+  {
+   "word": "alone",
+   "start": 12.186,
+   "end": 12.508
+  },
+  {
+   "word": "on",
+   "start": 12.508,
+   "end": 12.637
+  },
+  {
+   "word": "the",
+   "start": 12.637,
+   "end": 12.83
+  },
+  {
+   "word": "closing",
+   "start": 12.83,
+   "end": 13.28
+  },
+  {
+   "word": "shift",
+   "start": 13.28,
+   "end": 13.602
+  },
+  {
+   "word": ",",
+   "start": 13.602,
+   "end": 13.666
+  },
+  {
+   "word": "and",
+   "start": 13.666,
+   "end": 13.859
+  },
+  {
+   "word": "a",
+   "start": 13.859,
+   "end": 13.924
+  },
+  {
+   "word": "rent",
+   "start": 13.924,
+   "end": 14.181
+  },
+  {
+   "word": "payment",
+   "start": 14.181,
+   "end": 14.632
+  },
+  {
+   "word": "he",
+   "start": 14.632,
+   "end": 14.76
+  },
+  {
+   "word": "couldn't",
+   "start": 14.76,
+   "end": 15.275
+  },
+  {
+   "word": "make",
+   "start": 15.275,
+   "end": 15.532
+  },
+  {
+   "word": ".",
+   "start": 15.532,
+   "end": 15.597
+  },
+  {
+   "word": "He",
+   "start": 15.597,
+   "end": 15.725
+  },
+  {
+   "word": "finished",
+   "start": 15.725,
+   "end": 16.236
+  },
+  {
+   "word": "the",
+   "start": 16.236,
+   "end": 16.428
+  },
+  {
+   "word": "row",
+   "start": 16.428,
+   "end": 16.62
+  },
+  {
+   "word": ",",
+   "start": 16.62,
+   "end": 16.684
+  },
+  {
+   "word": "taped",
+   "start": 16.684,
+   "end": 17.004
+  },
+  {
+   "word": "the",
+   "start": 17.004,
+   "end": 17.196
+  },
+  {
+   "word": "carton",
+   "start": 17.196,
+   "end": 17.579
+  },
+  {
+   "word": "shut",
+   "start": 17.579,
+   "end": 17.835
+  },
+  {
+   "word": ",",
+   "start": 17.835,
+   "end": 17.899
+  },
+  {
+   "word": "and",
+   "start": 17.899,
+   "end": 18.091
+  },
+  {
+   "word": "walked",
+   "start": 18.091,
+   "end": 18.475
+  },
+  {
+   "word": "across",
+   "start": 18.475,
+   "end": 18.858
+  },
+  {
+   "word": "the",
+   "start": 18.858,
+   "end": 19.05
+  },
+  {
+   "word": "store",
+   "start": 19.05,
+   "end": 19.37
+  },
+  {
+   "word": "to",
+   "start": 19.37,
+   "end": 19.498
+  },
+  {
+   "word": "restock",
+   "start": 19.498,
+   "end": 19.946
+  },
+  {
+   "word": "the",
+   "start": 19.946,
+   "end": 20.137
+  },
+  {
+   "word": "other",
+   "start": 20.137,
+   "end": 20.457
+  },
+  {
+   "word": "side",
+   "start": 20.457,
+   "end": 20.713
+  },
+  {
+   "word": ".",
+   "start": 20.713,
+   "end": 20.777
+  },
+  {
+   "word": "The",
+   "start": 20.777,
+   "end": 20.961
+  },
+  {
+   "word": "automatic",
+   "start": 20.961,
+   "end": 21.514
+  },
+  {
+   "word": "glass",
+   "start": 21.514,
+   "end": 21.822
+  },
+  {
+   "word": "doors",
+   "start": 21.822,
+   "end": 22.129
+  },
+  {
+   "word": "were",
+   "start": 22.129,
+   "end": 22.375
+  },
+  {
+   "word": "on",
+   "start": 22.375,
+   "end": 22.498
+  },
+  {
+   "word": "his",
+   "start": 22.498,
+   "end": 22.682
+  },
+  {
+   "word": "way",
+   "start": 22.682,
+   "end": 22.866
+  },
+  {
+   "word": ".",
+   "start": 22.866,
+   "end": 22.928
+  },
+  {
+   "word": "Through",
+   "start": 22.928,
+   "end": 23.395
+  },
+  {
+   "word": "them",
+   "start": 23.395,
+   "end": 23.662
+  },
+  {
+   "word": ",",
+   "start": 23.662,
+   "end": 23.729
+  },
+  {
+   "word": "the",
+   "start": 23.729,
+   "end": 23.929
+  },
+  {
+   "word": "parking",
+   "start": 23.929,
+   "end": 24.396
+  },
+  {
+   "word": "lot",
+   "start": 24.396,
+   "end": 24.597
+  },
+  {
+   "word": "was",
+   "start": 24.597,
+   "end": 24.797
+  },
+  {
+   "word": "a",
+   "start": 24.797,
+   "end": 24.863
+  },
+  {
+   "word": "black",
+   "start": 24.863,
+   "end": 25.197
+  },
+  {
+   "word": "mirror",
+   "start": 25.197,
+   "end": 25.598
+  },
+  {
+   "word": ".",
+   "start": 25.598,
+   "end": 25.664
+  },
+  {
+   "word": "And",
+   "start": 25.664,
+   "end": 25.891
+  },
+  {
+   "word": "something",
+   "start": 25.891,
+   "end": 26.569
+  },
+  {
+   "word": "in",
+   "start": 26.569,
+   "end": 26.72
+  },
+  {
+   "word": "it",
+   "start": 26.72,
+   "end": 26.87
+  },
+  {
+   "word": "was",
+   "start": 26.87,
+   "end": 27.096
+  },
+  {
+   "word": "moving",
+   "start": 27.096,
+   "end": 27.549
+  },
+  {
+   "word": ".",
+   "start": 27.549,
+   "end": 27.624
+  },
+  {
+   "word": "A",
+   "start": 27.624,
+   "end": 27.709
+  },
+  {
+   "word": "man",
+   "start": 27.709,
+   "end": 27.965
+  },
+  {
+   "word": ",",
+   "start": 27.965,
+   "end": 28.051
+  },
+  {
+   "word": "or",
+   "start": 28.051,
+   "end": 28.221
+  },
+  {
+   "word": "what",
+   "start": 28.221,
+   "end": 28.563
+  },
+  {
+   "word": "used",
+   "start": 28.563,
+   "end": 28.904
+  },
+  {
+   "word": "to",
+   "start": 28.904,
+   "end": 29.075
+  },
+  {
+   "word": "be",
+   "start": 29.075,
+   "end": 29.245
+  },
+  {
+   "word": "a",
+   "start": 29.245,
+   "end": 29.331
+  },
+  {
+   "word": "man",
+   "start": 29.331,
+   "end": 29.587
+  },
+  {
+   "word": ",",
+   "start": 29.587,
+   "end": 29.672
+  },
+  {
+   "word": "in",
+   "start": 29.672,
+   "end": 29.843
+  },
+  {
+   "word": "a",
+   "start": 29.843,
+   "end": 29.928
+  },
+  {
+   "word": "green",
+   "start": 29.928,
+   "end": 30.355
+  },
+  {
+   "word": "coat",
+   "start": 30.355,
+   "end": 30.696
+  },
+  {
+   "word": ",",
+   "start": 30.696,
+   "end": 30.781
+  },
+  {
+   "word": "limping",
+   "start": 30.781,
+   "end": 31.379
+  },
+  {
+   "word": ".",
+   "start": 31.379,
+   "end": 31.464
+  },
+  {
+   "word": "He",
+   "start": 31.464,
+   "end": 31.6
+  },
+  {
+   "word": "was",
+   "start": 31.6,
+   "end": 31.804
+  },
+  {
+   "word": "pressed",
+   "start": 31.804,
+   "end": 32.279
+  },
+  {
+   "word": "against",
+   "start": 32.279,
+   "end": 32.755
+  },
+  {
+   "word": "a",
+   "start": 32.755,
+   "end": 32.823
+  },
+  {
+   "word": "parked",
+   "start": 32.823,
+   "end": 33.231
+  },
+  {
+   "word": "car",
+   "start": 33.231,
+   "end": 33.434
+  },
+  {
+   "word": ",",
+   "start": 33.434,
+   "end": 33.502
+  },
+  {
+   "word": "slamming",
+   "start": 33.502,
+   "end": 34.046
+  },
+  {
+   "word": "one",
+   "start": 34.046,
+   "end": 34.25
+  },
+  {
+   "word": "hand",
+   "start": 34.25,
+   "end": 34.522
+  },
+  {
+   "word": "into",
+   "start": 34.522,
+   "end": 34.793
+  },
+  {
+   "word": "the",
+   "start": 34.793,
+   "end": 34.997
+  },
+  {
+   "word": "window",
+   "start": 34.997,
+   "end": 35.405
+  },
+  {
+   "word": ".",
+   "start": 35.405,
+   "end": 35.473
+  },
+  {
+   "word": "Again",
+   "start": 35.473,
+   "end": 36.111
+  },
+  {
+   "word": ".",
+   "start": 36.111,
+   "end": 36.239
+  },
+  {
+   "word": "And",
+   "start": 36.239,
+   "end": 36.509
+  },
+  {
+   "word": "again",
+   "start": 36.509,
+   "end": 36.959
+  },
+  {
+   "word": ".",
+   "start": 36.959,
+   "end": 37.05
+  },
+  {
+   "word": "The",
+   "start": 37.05,
+   "end": 37.246
+  },
+  {
+   "word": "same",
+   "start": 37.246,
+   "end": 37.508
+  },
+  {
+   "word": "motion",
+   "start": 37.508,
+   "end": 37.902
+  },
+  {
+   "word": "every",
+   "start": 37.902,
+   "end": 38.229
+  },
+  {
+   "word": "time",
+   "start": 38.229,
+   "end": 38.491
+  },
+  {
+   "word": ",",
+   "start": 38.491,
+   "end": 38.557
+  },
+  {
+   "word": "like",
+   "start": 38.557,
+   "end": 38.819
+  },
+  {
+   "word": "a",
+   "start": 38.819,
+   "end": 38.885
+  },
+  {
+   "word": "machine",
+   "start": 38.885,
+   "end": 39.343
+  },
+  {
+   "word": "that",
+   "start": 39.343,
+   "end": 39.605
+  },
+  {
+   "word": "had",
+   "start": 39.605,
+   "end": 39.802
+  },
+  {
+   "word": "forgotten",
+   "start": 39.802,
+   "end": 40.392
+  },
+  {
+   "word": "how",
+   "start": 40.392,
+   "end": 40.589
+  },
+  {
+   "word": "to",
+   "start": 40.589,
+   "end": 40.72
+  },
+  {
+   "word": "stop",
+   "start": 40.72,
+   "end": 40.982
+  },
+  {
+   "word": ".",
+   "start": 40.982,
+   "end": 41.047
+  },
+  {
+   "word": "The",
+   "start": 41.047,
+   "end": 41.261
+  },
+  {
+   "word": "stocker",
+   "start": 41.261,
+   "end": 41.761
+  },
+  {
+   "word": "set",
+   "start": 41.761,
+   "end": 41.974
+  },
+  {
+   "word": "down",
+   "start": 41.974,
+   "end": 42.26
+  },
+  {
+   "word": "the",
+   "start": 42.26,
+   "end": 42.474
+  },
+  {
+   "word": "box",
+   "start": 42.474,
+   "end": 42.688
+  },
+  {
+   "word": ".",
+   "start": 42.688,
+   "end": 42.759
+  },
+  {
+   "word": "He",
+   "start": 42.759,
+   "end": 42.897
+  },
+  {
+   "word": "walked",
+   "start": 42.897,
+   "end": 43.309
+  },
+  {
+   "word": "to",
+   "start": 43.309,
+   "end": 43.447
+  },
+  {
+   "word": "the",
+   "start": 43.447,
+   "end": 43.653
+  },
+  {
+   "word": "glass",
+   "start": 43.653,
+   "end": 43.997
+  },
+  {
+   "word": ".",
+   "start": 43.997,
+   "end": 44.065
+  },
+  {
+   "word": "Up",
+   "start": 44.065,
+   "end": 44.231
+  },
+  {
+   "word": "close",
+   "start": 44.231,
+   "end": 44.645
+  },
+  {
+   "word": ",",
+   "start": 44.645,
+   "end": 44.728
+  },
+  {
+   "word": "the",
+   "start": 44.728,
+   "end": 44.977
+  },
+  {
+   "word": "details",
+   "start": 44.977,
+   "end": 45.557
+  },
+  {
+   "word": "were",
+   "start": 45.557,
+   "end": 45.888
+  },
+  {
+   "word": "worse",
+   "start": 45.888,
+   "end": 46.302
+  },
+  {
+   "word": ".",
+   "start": 46.302,
+   "end": 46.385
+  },
+  {
+   "word": "Skin",
+   "start": 46.385,
+   "end": 46.713
+  },
+  {
+   "word": "the",
+   "start": 46.713,
+   "end": 46.959
+  },
+  {
+   "word": "colour",
+   "start": 46.959,
+   "end": 47.451
+  },
+  {
+   "word": "of",
+   "start": 47.451,
+   "end": 47.615
+  },
+  {
+   "word": "old",
+   "start": 47.615,
+   "end": 47.861
+  },
+  {
+   "word": "leaves",
+   "start": 47.861,
+   "end": 48.353
+  },
+  {
+   "word": ".",
+   "start": 48.353,
+   "end": 48.435
+  },
+  {
+   "word": "A",
+   "start": 48.435,
+   "end": 48.511
+  },
+  {
+   "word": "jaw",
+   "start": 48.511,
+   "end": 48.739
+  },
+  {
+   "word": "hanging",
+   "start": 48.739,
+   "end": 49.273
+  },
+  {
+   "word": "wrong",
+   "start": 49.273,
+   "end": 49.654
+  },
+  {
+   "word": ".",
+   "start": 49.654,
+   "end": 49.73
+  },
+  {
+   "word": "Eyes",
+   "start": 49.73,
+   "end": 49.952
+  },
+  {
+   "word": "that",
+   "start": 49.952,
+   "end": 50.174
+  },
+  {
+   "word": "didn't",
+   "start": 50.174,
+   "end": 50.507
+  },
+  {
+   "word": "look",
+   "start": 50.507,
+   "end": 50.729
+  },
+  {
+   "word": "at",
+   "start": 50.729,
+   "end": 50.84
+  },
+  {
+   "word": "anything",
+   "start": 50.84,
+   "end": 51.285
+  },
+  {
+   "word": ".",
+   "start": 51.285,
+   "end": 51.34
+  },
+  {
+   "word": "Rain",
+   "start": 51.34,
+   "end": 51.593
+  },
+  {
+   "word": "running",
+   "start": 51.593,
+   "end": 52.036
+  },
+  {
+   "word": "off",
+   "start": 52.036,
+   "end": 52.226
+  },
+  {
+   "word": "him",
+   "start": 52.226,
+   "end": 52.416
+  },
+  {
+   "word": "in",
+   "start": 52.416,
+   "end": 52.543
+  },
+  {
+   "word": "sheets",
+   "start": 52.543,
+   "end": 52.922
+  },
+  {
+   "word": ",",
+   "start": 52.922,
+   "end": 52.986
+  },
+  {
+   "word": "and",
+   "start": 52.986,
+   "end": 53.175
+  },
+  {
+   "word": "he",
+   "start": 53.175,
+   "end": 53.302
+  },
+  {
+   "word": "didn't",
+   "start": 53.302,
+   "end": 53.682
+  },
+  {
+   "word": "seem",
+   "start": 53.682,
+   "end": 53.935
+  },
+  {
+   "word": "to",
+   "start": 53.935,
+   "end": 54.061
+  },
+  {
+   "word": "feel",
+   "start": 54.061,
+   "end": 54.315
+  },
+  {
+   "word": "it",
+   "start": 54.315,
+   "end": 54.441
+  },
+  {
+   "word": ".",
+   "start": 54.441,
+   "end": 54.505
+  },
+  {
+   "word": "The",
+   "start": 54.505,
+   "end": 54.73
+  },
+  {
+   "word": "thing",
+   "start": 54.73,
+   "end": 55.105
+  },
+  {
+   "word": "turned",
+   "start": 55.105,
+   "end": 55.556
+  },
+  {
+   "word": ".",
+   "start": 55.556,
+   "end": 55.631
+  },
+  {
+   "word": "He",
+   "start": 55.631,
+   "end": 55.749
+  },
+  {
+   "word": "ran",
+   "start": 55.749,
+   "end": 55.926
+  },
+  {
+   "word": "for",
+   "start": 55.926,
+   "end": 56.104
+  },
+  {
+   "word": "the",
+   "start": 56.104,
+   "end": 56.282
+  },
+  {
+   "word": "shutter",
+   "start": 56.282,
+   "end": 56.696
+  },
+  {
+   "word": "controls",
+   "start": 56.696,
+   "end": 57.169
+  },
+  {
+   "word": "beside",
+   "start": 57.169,
+   "end": 57.524
+  },
+  {
+   "word": "the",
+   "start": 57.524,
+   "end": 57.702
+  },
+  {
+   "word": "door",
+   "start": 57.702,
+   "end": 57.938
+  },
+  {
+   "word": "and",
+   "start": 57.938,
+   "end": 58.116
+  },
+  {
+   "word": "hit",
+   "start": 58.116,
+   "end": 58.293
+  },
+  {
+   "word": "the",
+   "start": 58.293,
+   "end": 58.471
+  },
+  {
+   "word": "button",
+   "start": 58.471,
+   "end": 58.826
+  },
+  {
+   "word": ".",
+   "start": 58.826,
+   "end": 58.885
+  },
+  {
+   "word": "The",
+   "start": 58.885,
+   "end": 59.091
+  },
+  {
+   "word": "steel",
+   "start": 59.091,
+   "end": 59.435
+  },
+  {
+   "word": "shutter",
+   "start": 59.435,
+   "end": 59.916
+  },
+  {
+   "word": "came",
+   "start": 59.916,
+   "end": 60.191
+  },
+  {
+   "word": "down",
+   "start": 60.191,
+   "end": 60.466
+  },
+  {
+   "word": "with",
+   "start": 60.466,
+   "end": 60.74
+  },
+  {
+   "word": "a",
+   "start": 60.74,
+   "end": 60.809
+  },
+  {
+   "word": "scream",
+   "start": 60.809,
+   "end": 61.221
+  },
+  {
+   "word": "of",
+   "start": 61.221,
+   "end": 61.359
+  },
+  {
+   "word": "metal",
+   "start": 61.359,
+   "end": 61.702
+  },
+  {
+   "word": ",",
+   "start": 61.702,
+   "end": 61.771
+  },
+  {
+   "word": "slow",
+   "start": 61.771,
+   "end": 62.046
+  },
+  {
+   "word": ",",
+   "start": 62.046,
+   "end": 62.115
+  },
+  {
+   "word": "too",
+   "start": 62.115,
+   "end": 62.321
+  },
+  {
+   "word": "slow",
+   "start": 62.321,
+   "end": 62.596
+  },
+  {
+   "word": ",",
+   "start": 62.596,
+   "end": 62.664
+  },
+  {
+   "word": "grinding",
+   "start": 62.664,
+   "end": 63.214
+  },
+  {
+   "word": "toward",
+   "start": 63.214,
+   "end": 63.626
+  },
+  {
+   "word": "the",
+   "start": 63.626,
+   "end": 63.832
+  },
+  {
+   "word": "floor",
+   "start": 63.832,
+   "end": 64.176
+  },
+  {
+   "word": "while",
+   "start": 64.176,
+   "end": 64.52
+  },
+  {
+   "word": "the",
+   "start": 64.52,
+   "end": 64.726
+  },
+  {
+   "word": "thing",
+   "start": 64.726,
+   "end": 65.069
+  },
+  {
+   "word": "outside",
+   "start": 65.069,
+   "end": 65.55
+  },
+  {
+   "word": "turned",
+   "start": 65.55,
+   "end": 65.963
+  },
+  {
+   "word": "toward",
+   "start": 65.963,
+   "end": 66.375
+  },
+  {
+   "word": "the",
+   "start": 66.375,
+   "end": 66.581
+  },
+  {
+   "word": "sound",
+   "start": 66.581,
+   "end": 66.925
+  },
+  {
+   "word": ".",
+   "start": 66.925,
+   "end": 66.993
+  },
+  {
+   "word": "Six",
+   "start": 66.993,
+   "end": 67.316
+  },
+  {
+   "word": "seconds",
+   "start": 67.316,
+   "end": 68.068
+  },
+  {
+   "word": ".",
+   "start": 68.068,
+   "end": 68.176
+  },
+  {
+   "word": "That's",
+   "start": 68.176,
+   "end": 68.55
+  },
+  {
+   "word": "how",
+   "start": 68.55,
+   "end": 68.737
+  },
+  {
+   "word": "long",
+   "start": 68.737,
+   "end": 68.986
+  },
+  {
+   "word": "it",
+   "start": 68.986,
+   "end": 69.111
+  },
+  {
+   "word": "takes",
+   "start": 69.111,
+   "end": 69.423
+  },
+  {
+   "word": "a",
+   "start": 69.423,
+   "end": 69.485
+  },
+  {
+   "word": "steel",
+   "start": 69.485,
+   "end": 69.797
+  },
+  {
+   "word": "shutter",
+   "start": 69.797,
+   "end": 70.234
+  },
+  {
+   "word": "to",
+   "start": 70.234,
+   "end": 70.359
+  },
+  {
+   "word": "seal",
+   "start": 70.359,
+   "end": 70.608
+  },
+  {
+   "word": "a",
+   "start": 70.608,
+   "end": 70.67
+  },
+  {
+   "word": "supermarket",
+   "start": 70.67,
+   "end": 71.357
+  },
+  {
+   "word": ".",
+   "start": 71.357,
+   "end": 71.419
+  },
+  {
+   "word": "He",
+   "start": 71.419,
+   "end": 71.55
+  },
+  {
+   "word": "counted",
+   "start": 71.55,
+   "end": 72.01
+  },
+  {
+   "word": "every",
+   "start": 72.01,
+   "end": 72.339
+  },
+  {
+   "word": "one",
+   "start": 72.339,
+   "end": 72.536
+  },
+  {
+   "word": "of",
+   "start": 72.536,
+   "end": 72.667
+  },
+  {
+   "word": "them",
+   "start": 72.667,
+   "end": 72.93
+  },
+  {
+   "word": ".",
+   "start": 72.93,
+   "end": 72.995
+  },
+  {
+   "word": "When",
+   "start": 72.995,
+   "end": 73.24
+  },
+  {
+   "word": "it",
+   "start": 73.24,
+   "end": 73.362
+  },
+  {
+   "word": "finally",
+   "start": 73.362,
+   "end": 73.79
+  },
+  {
+   "word": "hit",
+   "start": 73.79,
+   "end": 73.974
+  },
+  {
+   "word": "the",
+   "start": 73.974,
+   "end": 74.157
+  },
+  {
+   "word": "floor",
+   "start": 74.157,
+   "end": 74.463
+  },
+  {
+   "word": ",",
+   "start": 74.463,
+   "end": 74.524
+  },
+  {
+   "word": "the",
+   "start": 74.524,
+   "end": 74.707
+  },
+  {
+   "word": "parking",
+   "start": 74.707,
+   "end": 75.135
+  },
+  {
+   "word": "lot",
+   "start": 75.135,
+   "end": 75.319
+  },
+  {
+   "word": "went",
+   "start": 75.319,
+   "end": 75.563
+  },
+  {
+   "word": "dark",
+   "start": 75.563,
+   "end": 75.808
+  },
+  {
+   "word": "and",
+   "start": 75.808,
+   "end": 75.991
+  },
+  {
+   "word": "the",
+   "start": 75.991,
+   "end": 76.174
+  },
+  {
+   "word": "store",
+   "start": 76.174,
+   "end": 76.48
+  },
+  {
+   "word": "stayed",
+   "start": 76.48,
+   "end": 76.847
+  },
+  {
+   "word": "bright",
+   "start": 76.847,
+   "end": 77.214
+  },
+  {
+   "word": ".",
+   "start": 77.214,
+   "end": 77.275
+  },
+  {
+   "word": "For",
+   "start": 77.275,
+   "end": 77.456
+  },
+  {
+   "word": "the",
+   "start": 77.456,
+   "end": 77.638
+  },
+  {
+   "word": "first",
+   "start": 77.638,
+   "end": 77.94
+  },
+  {
+   "word": "time",
+   "start": 77.94,
+   "end": 78.182
+  },
+  {
+   "word": "that",
+   "start": 78.182,
+   "end": 78.424
+  },
+  {
+   "word": "night",
+   "start": 78.424,
+   "end": 78.727
+  },
+  {
+   "word": ",",
+   "start": 78.727,
+   "end": 78.787
+  },
+  {
+   "word": "he",
+   "start": 78.787,
+   "end": 78.908
+  },
+  {
+   "word": "was",
+   "start": 78.908,
+   "end": 79.089
+  },
+  {
+   "word": "safe",
+   "start": 79.089,
+   "end": 79.331
+  },
+  {
+   "word": ".",
+   "start": 79.331,
+   "end": 79.392
+  },
+  {
+   "word": "Then",
+   "start": 79.392,
+   "end": 79.643
+  },
+  {
+   "word": "the",
+   "start": 79.643,
+   "end": 79.831
+  },
+  {
+   "word": "thing",
+   "start": 79.831,
+   "end": 80.144
+  },
+  {
+   "word": "outside",
+   "start": 80.144,
+   "end": 80.582
+  },
+  {
+   "word": "looked",
+   "start": 80.582,
+   "end": 80.958
+  },
+  {
+   "word": "up",
+   "start": 80.958,
+   "end": 81.084
+  },
+  {
+   "word": "at",
+   "start": 81.084,
+   "end": 81.209
+  },
+  {
+   "word": "the",
+   "start": 81.209,
+   "end": 81.397
+  },
+  {
+   "word": "camera",
+   "start": 81.397,
+   "end": 81.773
+  },
+  {
+   "word": ".",
+   "start": 81.773,
+   "end": 81.836
+  }
+ ]
+}

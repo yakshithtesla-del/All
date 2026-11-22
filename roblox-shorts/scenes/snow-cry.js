@@ -92,6 +92,7 @@ export default {
       { key: 'plaza', w: plaza }, { key: 'porch', w: porch }, { key: 'hill', w: hill },
     ]
     for (const r of rigs) {
+      r.w.sun.shadow.mapSize.set(1024, 1024) // software renderer: 4096 shadow maps are too slow in CI
       r.dome = r.w.root.children.find((o) => o.isMesh && o.geometry?.type === 'SphereGeometry' && o.material?.fog === false)
       r.glow = r.w.root.children.find((o) => o.isMesh && o.geometry?.type === 'CircleGeometry' && o.material?.fog === false)
     }
@@ -158,7 +159,7 @@ export default {
 
     const L = life(plaza, { people: 5, cars: 0, seed: 71, stage: [[0, 0, 13], [-3, 1.4, 6], [-8, 2, 5], [12, 2, 5]] }); scene.add(L.root)
 
-    return { mouth: await loadMouth(), mood: plaza.mood, plaza, porch, hill, room, rigs,
+    return { mouth: await loadMouth(), mood: plaza.mood, plaza, porch, hill, room, rigs, scene,
       kid, grandma, uncle, chief, v1, v2, cast, L, snow, fire, cake, plow, noCry, post, fair,
       cloudSmall, cloudBig, cloudHuge, bushes, buses, snowHeap, pigeons, shovel, bread, tone: 'none', look: [0, 0, 0] }
   },
@@ -168,13 +169,18 @@ export default {
     const d = direct(env, [...S.cast, ...S.L.people])
     const { kid, grandma, uncle, chief, v1, v2 } = S
     const cut = (...ws) => { const n = d.cut(...ws); return n }
+    const CENTRE = { plaza: P.plaza, porch: P.porch, hill: P.hill }
     const setPlace = (key, mode = 'day', look = [0, 0, 0]) => {
       for (const r of S.rigs) {
         const on = r.key === key
         r.w.sun.visible = on; r.w.hemi.visible = on
         if (r.dome) r.dome.visible = on
         if (r.glow) r.glow.visible = on
-        if (on) r.w.mood(mode, [0, 0, look[2] ?? 0])
+        if (on) {
+          // mood() aims the sun at the given point: it must be this world's own x, or the set sits in shadow.
+          r.w.mood(mode === 'night' ? 'dusk' : mode, [CENTRE[key] ?? 0, 0, look[2] ?? 0])
+          S.scene.fog = r.w.fog
+        }
       }
       S.look = look
     }
@@ -217,9 +223,9 @@ export default {
     } else if (k === 3) {
       // So nobody here cries. We chew gum at sad movies.
       place = 'room'
-      const n = cut('cries', 'movies'); d.show(v1, P.room - 2.4, 0, 2, 180, n ? 'bored' : 'neutral'); d.show(v2, P.room + 2.4, 0, 2, 180, n ? 'sleep' : 'neutral')
-      if (n === 0) d.cam([P.room, 4.4, 12], [P.room, 3.9, -3], 50, null)
-      else { d.cam([P.room + 0.4, 4.3, 11], [P.room, 3.8, -3], 48, null); d.burst('notes', 'movies', [P.room, 5, -8], { n: 6, size: 0.5, spread: 2 }) }
+      const n = cut('cries', 'movies'); d.show(v1, P.room - 2.4, 0, 2, 0, n ? 'bored' : 'neutral'); d.show(v2, P.room + 2.4, 0, 2, 0, n ? 'sleep' : 'neutral')
+      if (n === 0) d.camFree([P.room, 4.4, 12], [P.room, 3.9, -3], 50, null)
+      else { d.camFree([P.room + 0.4, 4.3, 11], [P.room, 3.8, -3], 48, null); d.burst('notes', 'movies', [P.room, 5, -8], { n: 6, size: 0.5, spread: 2 }) }
     } else if (k === 4) {
       // Every street has a plow. Every school has a NO CRYING sign.
       const n = cut('plow', 'sign'); S.plow.visible = true; S.post.visible = true
@@ -259,10 +265,10 @@ export default {
       // Then in August, the hill behind school caught fire.
       place = 'hill'
       const n = cut('August', 'fire'); d.show(kid, P.hill, 0, 6, 0, n ? 'shock' : 'neutral'); d.talk(kid)
-      if (n === 0) { d.cam([P.hill + 4, 4.2, 16], [P.hill, 4.6, -18], 52, null) }
+      if (n === 0) { d.shot('face', kid, { side: 14 }) }
       else { S.fire.visible = true; S.fire.userData.light.intensity = 160; d.appear(S.fire, 'fire', { pos: [P.hill, 0, -8], size: 1 })
         mode = 'dusk'; S.tone = 'danger'; d.shake('fire', 0.35)
-        d.cam([P.hill + 3.5, 3.2, 14], [P.hill, 3.6, -9], 52, null) }
+        d.cam([P.hill + 3.5, 3.2, 14], [P.hill, 3.6, -9], 52, null); d.allowEmpty() }
     } else if (k === 10) {
       // "We ran out of water in 10 minutes," the chief said.
       place = 'hill'; mode = 'dusk'; S.tone = 'danger'
@@ -407,11 +413,11 @@ export default {
     } else if (k === 27) {
       // We don't chew gum at movies anymore.
       place = 'room'
-      d.show(v1, P.room - 3.2, 0, 2, 180, 'frown')
-      d.show(kid, P.room + 0.4, 0, 4.4, 180, 'neutral'); d.talk(kid)
+      d.show(v1, P.room - 3.2, 0, 2, 0, 'frown')
+      d.show(kid, P.room + 0.4, 0, 4.4, 0, 'neutral'); d.talk(kid)
       const n = cut('gum', 'anymore')
-      if (n === 0) d.cam([P.room, 4.6, 13], [P.room, 3.9, -3], 52, null)
-      else d.cam([P.room + 0.5, 4.4, 12], [P.room, 3.8, -3], 50, null)
+      if (n === 0) d.camFree([P.room, 4.6, 13], [P.room, 3.9, -3], 52, null)
+      else d.camFree([P.room + 0.5, 4.4, 12], [P.room, 3.8, -3], 50, null)
     } else {
       // We just shovel.
       place = 'plaza'

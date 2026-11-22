@@ -1,0 +1,1 @@
+Surface textures for the blocky look, resized to 512 px. Colour maps are grey so a part's own colour tints them; *_n.jpg are the normal maps.

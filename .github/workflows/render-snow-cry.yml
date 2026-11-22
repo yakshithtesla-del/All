@@ -1,0 +1,80 @@
+name: Render Snow Cry Short (GitHub Actions)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'roblox-shorts/**'
+      - '.github/workflows/render-snow-cry.yml'
+
+concurrency:
+  group: snow-cry-render
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: roblox-shorts/package-lock.json
+
+      - name: Install browser system libraries
+        run: |
+          sudo apt-get update -qq
+          ALSA=$(apt-cache show libasound2t64 >/dev/null 2>&1 && echo libasound2t64 || echo libasound2)
+          sudo apt-get install -y -qq \
+            libnss3 libatk-bridge2.0-0 libgtk-3-0 libgbm1 "$ALSA" \
+            libxss1 libx11-xcb1 libxcomposite1 libxdamage1 libxrandr2 \
+            libpango-1.0-0 libcairo2 libatspi2.0-0 libcups2 libdrm2
+
+      - name: Install render packages
+        working-directory: roblox-shorts
+        run: npm ci --no-audit --no-fund
+
+      - name: Ensure Chrome for Puppeteer
+        working-directory: roblox-shorts
+        run: npx puppeteer browsers install chrome
+
+      - name: Check script and places
+        working-directory: roblox-shorts
+        run: node render.mjs check
+
+      - name: Render MP4 with Fish voice, score and SFX
+        id: render
+        working-directory: roblox-shorts
+        env:
+          FK_HISTORY: ${{ github.workspace }}/roblox-shorts/history.json
+        run: |
+          START=$(date +%s)
+          node render.mjs video
+          echo "render_seconds=$(( $(date +%s) - START ))" >> "$GITHUB_OUTPUT"
+
+      - name: Verify output
+        working-directory: roblox-shorts
+        run: |
+          ls -lh out/video.mp4
+          ffprobe -v error -show_entries format=duration,size:stream=codec_name,width,height,sample_rate,channels \
+            -of default=nw=1 out/video.mp4
+
+      - name: Upload MP4 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: snow-cry-vertical-mp4
+          path: |
+            roblox-shorts/out/video.mp4
+            roblox-shorts/out/sfx-plan.json
+          retention-days: 30
+          if-no-files-found: error
+
+      - name: Report render time
+        if: always()
+        run: echo "Render step: ${{ steps.render.outputs.render_seconds || 'n/a' }} seconds"

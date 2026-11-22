@@ -1,0 +1,100 @@
+{
+  "title": "In This Town, Every TEAR Makes It SNOW",
+  "format": "vertical",
+  "fps": 30,
+  "captions": false,
+  "music": "audio/bg.mp3",
+  "musicVolume": 0.12,
+  "voice": {
+    "provider": "fish",
+    "id": "e0fbbf9e5123434fb77c7a7eeaacb312"
+  },
+  "keys": [
+    "town",
+    "cry",
+    "snow",
+    "blizzard",
+    "3",
+    "gum",
+    "sign",
+    "4",
+    "grandma",
+    "sweaters",
+    "pigeons",
+    "fire",
+    "10",
+    "200",
+    "1",
+    "alone",
+    "2",
+    "buses",
+    "shovel"
+  ],
+  "places": [
+    {
+      "name": "the town square",
+      "lines": [1, 2, 3, 5, 6],
+      "build": "world:plaza",
+      "theme": "sunny",
+      "seed": 71,
+      "models": ["yellow-school-bus-0fd3b6"]
+    },
+    {
+      "name": "the living room",
+      "lines": [4],
+      "build": "room:living",
+      "seed": 18
+    },
+    {
+      "name": "grandma's porch",
+      "lines": [7, 8, 9],
+      "build": "world:suburb",
+      "theme": "sunny",
+      "seed": 33,
+      "models": ["pigeon-base"]
+    },
+    {
+      "name": "the hill behind school",
+      "lines": [10, "11-29"],
+      "build": "world:meadow",
+      "theme": "sunny",
+      "seed": 88,
+      "models": ["public-school-19ade5", "fire-lookout-tower-75a129", "pigeon-base"]
+    }
+  ],
+  "beats": [
+    { "line": "In this town, every time you cry, a snow cloud appears.", "style": "town", "scene": "snow-cry" },
+    { "line": "One tear makes a flurry. A real cry makes a blizzard.", "style": "town", "scene": "snow-cry" },
+    { "line": "My uncle cried at the town fair. We shoveled 3 feet off the cake.", "style": "town", "scene": "snow-cry" },
+    { "line": "So nobody here cries. We chew gum at sad movies.", "style": "town", "scene": "snow-cry" },
+    { "line": "Every street has a plow. Every school has a NO CRYING sign.", "style": "town", "scene": "snow-cry" },
+    { "line": "And me? I'm the driest kid in town. 4 years, no tears.", "style": "town", "scene": "snow-cry" },
+    { "line": "My grandma? She cries at everything.", "style": "town", "scene": "snow-cry" },
+    { "line": "She wears 3 sweaters in July and keeps bread in her pocket for pigeons.", "style": "town", "scene": "snow-cry" },
+    { "line": "She sobs at dog food commercials. Every single one.", "style": "town", "scene": "snow-cry" },
+    { "line": "Then in August, the hill behind school caught fire.", "style": "town", "scene": "snow-cry" },
+    { "line": "\"We ran out of water in 10 minutes,\" the chief said.", "style": "town", "scene": "snow-cry" },
+    { "line": "\"The reservoir's empty. The hill's 200 feet high.\"", "style": "town", "scene": "snow-cry" },
+    { "line": "Then I got an idea. A big enough cry could put it out.", "style": "town", "scene": "snow-cry" },
+    { "line": "But I hadn't cried in 4 years.", "style": "town", "scene": "snow-cry" },
+    { "line": "I tried. A sad song. 1 tear. Snow the size of a plate.", "style": "town", "scene": "snow-cry" },
+    { "line": "My goldfish. A flurry. It buried 3 bushes.", "style": "town", "scene": "snow-cry" },
+    { "line": "The pigeons. A cloud that swallowed 10 cars.", "style": "town", "scene": "snow-cry" },
+    { "line": "The fire didn't even notice.", "style": "town", "scene": "snow-cry" },
+    { "line": "I was out of tears. Except one.", "style": "town", "scene": "snow-cry" },
+    { "line": "\"I'm scared of being left alone,\" I said. And I meant it.", "style": "town", "scene": "snow-cry" },
+    { "line": "Thunder. A blizzard the size of the whole town rolled in.", "style": "town", "scene": "snow-cry" },
+    { "line": "The fire was out in 1 minute.", "style": "town", "scene": "snow-cry" },
+    { "line": "But it didn't stop. It snowed for 2 days.", "style": "town", "scene": "snow-cry" },
+    { "line": "The buses were buried. The pigeons vanished.", "style": "town", "scene": "snow-cry" },
+    { "line": "Grandma trudged up in 3 soaked sweaters.", "style": "town", "scene": "snow-cry" },
+    { "line": "\"I'm crying too,\" she said.", "style": "town", "scene": "snow-cry" },
+    { "line": "The second blizzard buried the whole block.", "style": "town", "scene": "snow-cry" },
+    { "line": "We don't chew gum at movies anymore.", "style": "town", "scene": "snow-cry" },
+    { "line": "We just shovel.", "style": "town", "scene": "snow-cry" }
+  ],
+  "sound": {
+    "bed": "none",
+    "music": -14
+  }
+}

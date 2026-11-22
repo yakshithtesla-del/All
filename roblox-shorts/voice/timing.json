@@ -1,0 +1,1554 @@
+{
+ "provider": "fish",
+ "voice": "e0fbbf9e5123434fb77c7a7eeaacb312",
+ "duration": 63.732,
+ "lines": [
+  {
+   "index": 0,
+   "text": "In this town, every time you cry, a snow cloud appears.",
+   "start": 0,
+   "end": 2.658,
+   "words": [
+    {
+     "word": "In",
+     "start": 0.04,
+     "end": 0.1
+    },
+    {
+     "word": "this",
+     "start": 0.12,
+     "end": 0.24
+    },
+    {
+     "word": "town,",
+     "start": 0.28,
+     "end": 0.52
+    },
+    {
+     "word": "every",
+     "start": 0.72,
+     "end": 0.88
+    },
+    {
+     "word": "time",
+     "start": 0.92,
+     "end": 1.04
+    },
+    {
+     "word": "you",
+     "start": 1.08,
+     "end": 1.14
+    },
+    {
+     "word": "cry,",
+     "start": 1.18,
+     "end": 1.44
+    },
+    {
+     "word": "a",
+     "start": 1.68,
+     "end": 1.7
+    },
+    {
+     "word": "snow",
+     "start": 1.78,
+     "end": 1.92
+    },
+    {
+     "word": "cloud",
+     "start": 1.96,
+     "end": 2.12
+    },
+    {
+     "word": "appears.",
+     "start": 2.16,
+     "end": 2.5
+    }
+   ]
+  },
+  {
+   "index": 1,
+   "text": "One tear makes a flurry. A real cry makes a blizzard.",
+   "start": 2.738,
+   "end": 5.39,
+   "words": [
+    {
+     "word": "One",
+     "start": 2.818,
+     "end": 2.918
+    },
+    {
+     "word": "tear",
+     "start": 2.978,
+     "end": 3.118
+    },
+    {
+     "word": "makes",
+     "start": 3.178,
+     "end": 3.318
+    },
+    {
+     "word": "a",
+     "start": 3.358,
+     "end": 3.398
+    },
+    {
+     "word": "flurry.",
+     "start": 3.418,
+     "end": 3.678
+    },
+    {
+     "word": "A",
+     "start": 4.038,
+     "end": 4.078
+    },
+    {
+     "word": "real",
+     "start": 4.118,
+     "end": 4.238
+    },
+    {
+     "word": "cry",
+     "start": 4.318,
+     "end": 4.558
+    },
+    {
+     "word": "makes",
+     "start": 4.598,
+     "end": 4.718
+    },
+    {
+     "word": "a",
+     "start": 4.758,
+     "end": 4.798
+    },
+    {
+     "word": "blizzard.",
+     "start": 4.818,
+     "end": 5.078
+    }
+   ]
+  },
+  {
+   "index": 2,
+   "text": "My uncle cried at the town fair. We shoveled 3 feet off the cake.",
+   "start": 5.47,
+   "end": 8.072,
+   "words": [
+    {
+     "word": "My",
+     "start": 5.51,
+     "end": 5.63
+    },
+    {
+     "word": "uncle",
+     "start": 5.67,
+     "end": 5.83
+    },
+    {
+     "word": "cried",
+     "start": 5.89,
+     "end": 6.13
+    },
+    {
+     "word": "at",
+     "start": 6.15,
+     "end": 6.19
+    },
+    {
+     "word": "the",
+     "start": 6.21,
+     "end": 6.27
+    },
+    {
+     "word": "town",
+     "start": 6.31,
+     "end": 6.51
+    },
+    {
+     "word": "fair.",
+     "start": 6.55,
+     "end": 6.75
+    },
+    {
+     "word": "We",
+     "start": 6.99,
+     "end": 7.09
+    },
+    {
+     "word": "shoveled",
+     "start": 7.11,
+     "end": 7.35
+    },
+    {
+     "word": "3",
+     "start": 7.47,
+     "end": 7.53
+    },
+    {
+     "word": "feet",
+     "start": 7.55,
+     "end": 7.67
+    },
+    {
+     "word": "off",
+     "start": 7.71,
+     "end": 7.81
+    },
+    {
+     "word": "the",
+     "start": 7.83,
+     "end": 7.87
+    },
+    {
+     "word": "cake.",
+     "start": 7.91,
+     "end": 8.05
+    }
+   ]
+  },
+  {
+   "index": 3,
+   "text": "So nobody here cries. We chew gum at sad movies.",
+   "start": 8.152,
+   "end": 10.608,
+   "words": [
+    {
+     "word": "So",
+     "start": 8.212,
+     "end": 8.332
+    },
+    {
+     "word": "nobody",
+     "start": 8.492,
+     "end": 8.752
+    },
+    {
+     "word": "here",
+     "start": 8.772,
+     "end": 8.892
+    },
+    {
+     "word": "cries.",
+     "start": 8.932,
+     "end": 9.252
+    },
+    {
+     "word": "We",
+     "start": 9.492,
+     "end": 9.572
+    },
+    {
+     "word": "chew",
+     "start": 9.612,
+     "end": 9.732
+    },
+    {
+     "word": "gum",
+     "start": 9.772,
+     "end": 9.912
+    },
+    {
+     "word": "at",
+     "start": 9.952,
+     "end": 10.052
+    },
+    {
+     "word": "sad",
+     "start": 10.092,
+     "end": 10.272
+    },
+    {
+     "word": "movies.",
+     "start": 10.312,
+     "end": 10.572
+    }
+   ]
+  },
+  {
+   "index": 4,
+   "text": "Every street has a plow. Every school has a NO CRYING sign.",
+   "start": 10.688,
+   "end": 13.779,
+   "words": [
+    {
+     "word": "Every",
+     "start": 10.748,
+     "end": 10.928
+    },
+    {
+     "word": "street",
+     "start": 11.048,
+     "end": 11.228
+    },
+    {
+     "word": "has",
+     "start": 11.268,
+     "end": 11.368
+    },
+    {
+     "word": "a",
+     "start": 11.388,
+     "end": 11.448
+    },
+    {
+     "word": "plow.",
+     "start": 11.468,
+     "end": 11.748
+    },
+    {
+     "word": "Every",
+     "start": 12.068,
+     "end": 12.228
+    },
+    {
+     "word": "school",
+     "start": 12.308,
+     "end": 12.548
+    },
+    {
+     "word": "has",
+     "start": 12.568,
+     "end": 12.668
+    },
+    {
+     "word": "a",
+     "start": 12.708,
+     "end": 12.748
+    },
+    {
+     "word": "NO",
+     "start": 12.808,
+     "end": 12.928
+    },
+    {
+     "word": "CRYING",
+     "start": 12.988,
+     "end": 13.248
+    },
+    {
+     "word": "sign.",
+     "start": 13.328,
+     "end": 13.608
+    }
+   ]
+  },
+  {
+   "index": 5,
+   "text": "And me? I'm the driest kid in town. 4 years, no tears.",
+   "start": 13.859,
+   "end": 16.816,
+   "words": [
+    {
+     "word": "And",
+     "start": 13.899,
+     "end": 13.959
+    },
+    {
+     "word": "me?",
+     "start": 14.019,
+     "end": 14.159
+    },
+    {
+     "word": "I'm",
+     "start": 14.459,
+     "end": 14.519
+    },
+    {
+     "word": "the",
+     "start": 14.559,
+     "end": 14.599
+    },
+    {
+     "word": "driest",
+     "start": 14.639,
+     "end": 14.879
+    },
+    {
+     "word": "kid",
+     "start": 14.919,
+     "end": 14.999
+    },
+    {
+     "word": "in",
+     "start": 15.019,
+     "end": 15.099
+    },
+    {
+     "word": "town.",
+     "start": 15.139,
+     "end": 15.379
+    },
+    {
+     "word": "4",
+     "start": 15.799,
+     "end": 15.839
+    },
+    {
+     "word": "years,",
+     "start": 15.879,
+     "end": 16.139
+    },
+    {
+     "word": "no",
+     "start": 16.339,
+     "end": 16.439
+    },
+    {
+     "word": "tears.",
+     "start": 16.519,
+     "end": 16.779
+    }
+   ]
+  },
+  {
+   "index": 6,
+   "text": "My grandma? She cries at everything.",
+   "start": 16.896,
+   "end": 18.376,
+   "words": [
+    {
+     "word": "My",
+     "start": 16.956,
+     "end": 17.036
+    },
+    {
+     "word": "grandma?",
+     "start": 17.076,
+     "end": 17.336
+    },
+    {
+     "word": "She",
+     "start": 17.696,
+     "end": 17.776
+    },
+    {
+     "word": "cries",
+     "start": 17.816,
+     "end": 17.976
+    },
+    {
+     "word": "at",
+     "start": 18.016,
+     "end": 18.056
+    },
+    {
+     "word": "everything.",
+     "start": 18.096,
+     "end": 18.356
+    }
+   ]
+  },
+  {
+   "index": 7,
+   "text": "She wears 3 sweaters in July and keeps bread in her pocket for pigeons.",
+   "start": 18.456,
+   "end": 21.371,
+   "words": [
+    {
+     "word": "She",
+     "start": 18.496,
+     "end": 18.556
+    },
+    {
+     "word": "wears",
+     "start": 18.596,
+     "end": 18.736
+    },
+    {
+     "word": "3",
+     "start": 18.876,
+     "end": 18.896
+    },
+    {
+     "word": "sweaters",
+     "start": 18.976,
+     "end": 19.216
+    },
+    {
+     "word": "in",
+     "start": 19.236,
+     "end": 19.296
+    },
+    {
+     "word": "July",
+     "start": 19.316,
+     "end": 19.596
+    },
+    {
+     "word": "and",
+     "start": 19.756,
+     "end": 19.816
+    },
+    {
+     "word": "keeps",
+     "start": 19.856,
+     "end": 20.016
+    },
+    {
+     "word": "bread",
+     "start": 20.056,
+     "end": 20.196
+    },
+    {
+     "word": "in",
+     "start": 20.216,
+     "end": 20.256
+    },
+    {
+     "word": "her",
+     "start": 20.276,
+     "end": 20.336
+    },
+    {
+     "word": "pocket",
+     "start": 20.376,
+     "end": 20.576
+    },
+    {
+     "word": "for",
+     "start": 20.596,
+     "end": 20.676
+    },
+    {
+     "word": "pigeons.",
+     "start": 20.716,
+     "end": 21.016
+    }
+   ]
+  },
+  {
+   "index": 8,
+   "text": "She sobs at dog food commercials. Every single one.",
+   "start": 21.451,
+   "end": 24.09,
+   "words": [
+    {
+     "word": "She",
+     "start": 21.451,
+     "end": 21.591
+    },
+    {
+     "word": "sobs",
+     "start": 21.651,
+     "end": 21.891
+    },
+    {
+     "word": "at",
+     "start": 21.911,
+     "end": 21.991
+    },
+    {
+     "word": "dog",
+     "start": 22.031,
+     "end": 22.171
+    },
+    {
+     "word": "food",
+     "start": 22.211,
+     "end": 22.331
+    },
+    {
+     "word": "commercials.",
+     "start": 22.371,
+     "end": 22.771
+    },
+    {
+     "word": "Every",
+     "start": 22.971,
+     "end": 23.111
+    },
+    {
+     "word": "single",
+     "start": 23.191,
+     "end": 23.411
+    },
+    {
+     "word": "one.",
+     "start": 23.491,
+     "end": 23.651
+    }
+   ]
+  },
+  {
+   "index": 9,
+   "text": "Then in August, the hill behind school caught fire.",
+   "start": 24.17,
+   "end": 26.509,
+   "words": [
+    {
+     "word": "Then",
+     "start": 24.21,
+     "end": 24.33
+    },
+    {
+     "word": "in",
+     "start": 24.35,
+     "end": 24.41
+    },
+    {
+     "word": "August,",
+     "start": 24.47,
+     "end": 24.73
+    },
+    {
+     "word": "the",
+     "start": 24.93,
+     "end": 24.99
+    },
+    {
+     "word": "hill",
+     "start": 25.01,
+     "end": 25.15
+    },
+    {
+     "word": "behind",
+     "start": 25.19,
+     "end": 25.39
+    },
+    {
+     "word": "school",
+     "start": 25.47,
+     "end": 25.65
+    },
+    {
+     "word": "caught",
+     "start": 25.73,
+     "end": 25.87
+    },
+    {
+     "word": "fire.",
+     "start": 25.93,
+     "end": 26.17
+    }
+   ]
+  },
+  {
+   "index": 10,
+   "text": "\"We ran out of water in 10 minutes,\" the chief said.",
+   "start": 26.589,
+   "end": 28.626,
+   "words": [
+    {
+     "word": "\"We",
+     "start": 26.629,
+     "end": 26.709
+    },
+    {
+     "word": "ran",
+     "start": 26.769,
+     "end": 26.889
+    },
+    {
+     "word": "out",
+     "start": 26.929,
+     "end": 27.009
+    },
+    {
+     "word": "of",
+     "start": 27.029,
+     "end": 27.089
+    },
+    {
+     "word": "water",
+     "start": 27.109,
+     "end": 27.309
+    },
+    {
+     "word": "in",
+     "start": 27.329,
+     "end": 27.389
+    },
+    {
+     "word": "10",
+     "start": 27.429,
+     "end": 27.549
+    },
+    {
+     "word": "minutes,\"",
+     "start": 27.589,
+     "end": 27.849
+    },
+    {
+     "word": "the",
+     "start": 27.989,
+     "end": 28.069
+    },
+    {
+     "word": "chief",
+     "start": 28.089,
+     "end": 28.229
+    },
+    {
+     "word": "said.",
+     "start": 28.289,
+     "end": 28.469
+    }
+   ]
+  },
+  {
+   "index": 11,
+   "text": "\"The reservoir's empty. The hill's 200 feet high.\"",
+   "start": 28.706,
+   "end": 30.863,
+   "words": [
+    {
+     "word": "\"The",
+     "start": 28.706,
+     "end": 28.766
+    },
+    {
+     "word": "reservoir's",
+     "start": 28.806,
+     "end": 29.186
+    },
+    {
+     "word": "empty.",
+     "start": 29.226,
+     "end": 29.446
+    },
+    {
+     "word": "The",
+     "start": 29.746,
+     "end": 29.806
+    },
+    {
+     "word": "hill's",
+     "start": 29.826,
+     "end": 30.066
+    },
+    {
+     "word": "200",
+     "start": 30.186,
+     "end": 30.406
+    },
+    {
+     "word": "feet",
+     "start": 30.426,
+     "end": 30.546
+    },
+    {
+     "word": "high.\"",
+     "start": 30.586,
+     "end": 30.786
+    }
+   ]
+  },
+  {
+   "index": 12,
+   "text": "Then I got an idea. A big enough cry could put it out.",
+   "start": 30.943,
+   "end": 33.504,
+   "words": [
+    {
+     "word": "Then",
+     "start": 31.003,
+     "end": 31.103
+    },
+    {
+     "word": "I",
+     "start": 31.143,
+     "end": 31.183
+    },
+    {
+     "word": "got",
+     "start": 31.223,
+     "end": 31.303
+    },
+    {
+     "word": "an",
+     "start": 31.323,
+     "end": 31.363
+    },
+    {
+     "word": "idea.",
+     "start": 31.423,
+     "end": 31.683
+    },
+    {
+     "word": "A",
+     "start": 32.063,
+     "end": 32.103
+    },
+    {
+     "word": "big",
+     "start": 32.143,
+     "end": 32.223
+    },
+    {
+     "word": "enough",
+     "start": 32.263,
+     "end": 32.423
+    },
+    {
+     "word": "cry",
+     "start": 32.463,
+     "end": 32.663
+    },
+    {
+     "word": "could",
+     "start": 32.803,
+     "end": 32.883
+    },
+    {
+     "word": "put",
+     "start": 32.923,
+     "end": 33.003
+    },
+    {
+     "word": "it",
+     "start": 33.023,
+     "end": 33.083
+    },
+    {
+     "word": "out.",
+     "start": 33.143,
+     "end": 33.283
+    }
+   ]
+  },
+  {
+   "index": 13,
+   "text": "But I hadn't cried in 4 years.",
+   "start": 33.584,
+   "end": 34.802,
+   "words": [
+    {
+     "word": "But",
+     "start": 33.604,
+     "end": 33.664
+    },
+    {
+     "word": "I",
+     "start": 33.724,
+     "end": 33.725
+    },
+    {
+     "word": "hadn't",
+     "start": 33.764,
+     "end": 33.884
+    },
+    {
+     "word": "cried",
+     "start": 33.924,
+     "end": 34.104
+    },
+    {
+     "word": "in",
+     "start": 34.124,
+     "end": 34.204
+    },
+    {
+     "word": "4",
+     "start": 34.344,
+     "end": 34.384
+    },
+    {
+     "word": "years.",
+     "start": 34.444,
+     "end": 34.684
+    }
+   ]
+  },
+  {
+   "index": 14,
+   "text": "I tried. A sad song. 1 tear. Snow the size of a plate.",
+   "start": 34.882,
+   "end": 38.286,
+   "words": [
+    {
+     "word": "I",
+     "start": 34.962,
+     "end": 35.002
+    },
+    {
+     "word": "tried.",
+     "start": 35.042,
+     "end": 35.362
+    },
+    {
+     "word": "A",
+     "start": 35.702,
+     "end": 35.782
+    },
+    {
+     "word": "sad",
+     "start": 35.822,
+     "end": 36.002
+    },
+    {
+     "word": "song.",
+     "start": 36.082,
+     "end": 36.322
+    },
+    {
+     "word": "1",
+     "start": 36.762,
+     "end": 36.782
+    },
+    {
+     "word": "tear.",
+     "start": 36.862,
+     "end": 37.062
+    },
+    {
+     "word": "Snow",
+     "start": 37.402,
+     "end": 37.562
+    },
+    {
+     "word": "the",
+     "start": 37.602,
+     "end": 37.682
+    },
+    {
+     "word": "size",
+     "start": 37.702,
+     "end": 37.902
+    },
+    {
+     "word": "of",
+     "start": 37.922,
+     "end": 37.962
+    },
+    {
+     "word": "a",
+     "start": 38.002,
+     "end": 38.022
+    },
+    {
+     "word": "plate.",
+     "start": 38.042,
+     "end": 38.262
+    }
+   ]
+  },
+  {
+   "index": 15,
+   "text": "My goldfish. A flurry. It buried 3 bushes.",
+   "start": 38.366,
+   "end": 40.809,
+   "words": [
+    {
+     "word": "My",
+     "start": 38.406,
+     "end": 38.506
+    },
+    {
+     "word": "goldfish.",
+     "start": 38.566,
+     "end": 38.966
+    },
+    {
+     "word": "A",
+     "start": 39.206,
+     "end": 39.246
+    },
+    {
+     "word": "flurry.",
+     "start": 39.306,
+     "end": 39.546
+    },
+    {
+     "word": "It",
+     "start": 39.906,
+     "end": 40.006
+    },
+    {
+     "word": "buried",
+     "start": 40.026,
+     "end": 40.246
+    },
+    {
+     "word": "3",
+     "start": 40.426,
+     "end": 40.446
+    },
+    {
+     "word": "bushes.",
+     "start": 40.506,
+     "end": 40.786
+    }
+   ]
+  },
+  {
+   "index": 16,
+   "text": "The pigeons. A cloud that swallowed 10 cars.",
+   "start": 40.889,
+   "end": 43.029,
+   "words": [
+    {
+     "word": "The",
+     "start": 40.929,
+     "end": 40.989
+    },
+    {
+     "word": "pigeons.",
+     "start": 41.009,
+     "end": 41.349
+    },
+    {
+     "word": "A",
+     "start": 41.549,
+     "end": 41.589
+    },
+    {
+     "word": "cloud",
+     "start": 41.629,
+     "end": 41.789
+    },
+    {
+     "word": "that",
+     "start": 41.829,
+     "end": 41.889
+    },
+    {
+     "word": "swallowed",
+     "start": 41.929,
+     "end": 42.209
+    },
+    {
+     "word": "10",
+     "start": 42.249,
+     "end": 42.389
+    },
+    {
+     "word": "cars.",
+     "start": 42.469,
+     "end": 42.769
+    }
+   ]
+  },
+  {
+   "index": 17,
+   "text": "The fire didn't even notice.",
+   "start": 43.109,
+   "end": 44.018,
+   "words": [
+    {
+     "word": "The",
+     "start": 43.129,
+     "end": 43.209
+    },
+    {
+     "word": "fire",
+     "start": 43.229,
+     "end": 43.409
+    },
+    {
+     "word": "didn't",
+     "start": 43.429,
+     "end": 43.549
+    },
+    {
+     "word": "even",
+     "start": 43.569,
+     "end": 43.689
+    },
+    {
+     "word": "notice.",
+     "start": 43.729,
+     "end": 43.989
+    }
+   ]
+  },
+  {
+   "index": 18,
+   "text": "I was out of tears. Except one.",
+   "start": 44.098,
+   "end": 45.878,
+   "words": [
+    {
+     "word": "I",
+     "start": 44.178,
+     "end": 44.218
+    },
+    {
+     "word": "was",
+     "start": 44.238,
+     "end": 44.318
+    },
+    {
+     "word": "out",
+     "start": 44.358,
+     "end": 44.418
+    },
+    {
+     "word": "of",
+     "start": 44.438,
+     "end": 44.498
+    },
+    {
+     "word": "tears.",
+     "start": 44.538,
+     "end": 44.838
+    },
+    {
+     "word": "Except",
+     "start": 45.238,
+     "end": 45.478
+    },
+    {
+     "word": "one.",
+     "start": 45.578,
+     "end": 45.738
+    }
+   ]
+  },
+  {
+   "index": 19,
+   "text": "\"I'm scared of being left alone,\" I said. And I meant it.",
+   "start": 45.958,
+   "end": 48.579,
+   "words": [
+    {
+     "word": "\"I'm",
+     "start": 45.958,
+     "end": 46.118
+    },
+    {
+     "word": "scared",
+     "start": 46.158,
+     "end": 46.398
+    },
+    {
+     "word": "of",
+     "start": 46.438,
+     "end": 46.478
+    },
+    {
+     "word": "being",
+     "start": 46.518,
+     "end": 46.678
+    },
+    {
+     "word": "left",
+     "start": 46.718,
+     "end": 46.858
+    },
+    {
+     "word": "alone,\"",
+     "start": 46.898,
+     "end": 47.178
+    },
+    {
+     "word": "I",
+     "start": 47.478,
+     "end": 47.538
+    },
+    {
+     "word": "said.",
+     "start": 47.578,
+     "end": 47.778
+    },
+    {
+     "word": "And",
+     "start": 48.098,
+     "end": 48.178
+    },
+    {
+     "word": "I",
+     "start": 48.238,
+     "end": 48.258
+    },
+    {
+     "word": "meant",
+     "start": 48.298,
+     "end": 48.438
+    },
+    {
+     "word": "it.",
+     "start": 48.478,
+     "end": 48.558
+    }
+   ]
+  },
+  {
+   "index": 20,
+   "text": "Thunder. A blizzard the size of the whole town rolled in.",
+   "start": 48.659,
+   "end": 51.078,
+   "words": [
+    {
+     "word": "Thunder.",
+     "start": 48.699,
+     "end": 48.979
+    },
+    {
+     "word": "A",
+     "start": 49.279,
+     "end": 49.339
+    },
+    {
+     "word": "blizzard",
+     "start": 49.379,
+     "end": 49.639
+    },
+    {
+     "word": "the",
+     "start": 49.679,
+     "end": 49.759
+    },
+    {
+     "word": "size",
+     "start": 49.799,
+     "end": 49.979
+    },
+    {
+     "word": "of",
+     "start": 50.019,
+     "end": 50.059
+    },
+    {
+     "word": "the",
+     "start": 50.099,
+     "end": 50.139
+    },
+    {
+     "word": "whole",
+     "start": 50.179,
+     "end": 50.279
+    },
+    {
+     "word": "town",
+     "start": 50.359,
+     "end": 50.599
+    },
+    {
+     "word": "rolled",
+     "start": 50.639,
+     "end": 50.799
+    },
+    {
+     "word": "in.",
+     "start": 50.859,
+     "end": 50.979
+    }
+   ]
+  },
+  {
+   "index": 21,
+   "text": "The fire was out in 1 minute.",
+   "start": 51.158,
+   "end": 52.304,
+   "words": [
+    {
+     "word": "The",
+     "start": 51.198,
+     "end": 51.258
+    },
+    {
+     "word": "fire",
+     "start": 51.298,
+     "end": 51.478
+    },
+    {
+     "word": "was",
+     "start": 51.518,
+     "end": 51.598
+    },
+    {
+     "word": "out",
+     "start": 51.658,
+     "end": 51.758
+    },
+    {
+     "word": "in",
+     "start": 51.798,
+     "end": 51.878
+    },
+    {
+     "word": "1",
+     "start": 52.018,
+     "end": 52.038
+    },
+    {
+     "word": "minute.",
+     "start": 52.058,
+     "end": 52.258
+    }
+   ]
+  },
+  {
+   "index": 22,
+   "text": "But it didn't stop. It snowed for 2 days.",
+   "start": 52.384,
+   "end": 54.299,
+   "words": [
+    {
+     "word": "But",
+     "start": 52.424,
+     "end": 52.504
+    },
+    {
+     "word": "it",
+     "start": 52.524,
+     "end": 52.584
+    },
+    {
+     "word": "didn't",
+     "start": 52.604,
+     "end": 52.764
+    },
+    {
+     "word": "stop.",
+     "start": 52.804,
+     "end": 53.084
+    },
+    {
+     "word": "It",
+     "start": 53.364,
+     "end": 53.424
+    },
+    {
+     "word": "snowed",
+     "start": 53.464,
+     "end": 53.684
+    },
+    {
+     "word": "for",
+     "start": 53.724,
+     "end": 53.804
+    },
+    {
+     "word": "2",
+     "start": 53.904,
+     "end": 53.924
+    },
+    {
+     "word": "days.",
+     "start": 53.964,
+     "end": 54.244
+    }
+   ]
+  },
+  {
+   "index": 23,
+   "text": "The buses were buried. The pigeons vanished.",
+   "start": 54.379,
+   "end": 56.242,
+   "words": [
+    {
+     "word": "The",
+     "start": 54.419,
+     "end": 54.479
+    },
+    {
+     "word": "buses",
+     "start": 54.499,
+     "end": 54.759
+    },
+    {
+     "word": "were",
+     "start": 54.779,
+     "end": 54.879
+    },
+    {
+     "word": "buried.",
+     "start": 54.899,
+     "end": 55.159
+    },
+    {
+     "word": "The",
+     "start": 55.459,
+     "end": 55.539
+    },
+    {
+     "word": "pigeons",
+     "start": 55.559,
+     "end": 55.859
+    },
+    {
+     "word": "vanished.",
+     "start": 55.919,
+     "end": 56.219
+    }
+   ]
+  },
+  {
+   "index": 24,
+   "text": "Grandma trudged up in 3 soaked sweaters.",
+   "start": 56.322,
+   "end": 58.301,
+   "words": [
+    {
+     "word": "Grandma",
+     "start": 56.382,
+     "end": 56.642
+    },
+    {
+     "word": "trudged",
+     "start": 56.682,
+     "end": 56.922
+    },
+    {
+     "word": "up",
+     "start": 56.982,
+     "end": 57.062
+    },
+    {
+     "word": "in",
+     "start": 57.102,
+     "end": 57.162
+    },
+    {
+     "word": "3",
+     "start": 57.382,
+     "end": 57.442
+    },
+    {
+     "word": "soaked",
+     "start": 57.482,
+     "end": 57.702
+    },
+    {
+     "word": "sweaters.",
+     "start": 57.762,
+     "end": 58.082
+    }
+   ]
+  },
+  {
+   "index": 25,
+   "text": "\"I'm crying too,\" she said.",
+   "start": 58.381,
+   "end": 59.622,
+   "words": [
+    {
+     "word": "\"I'm",
+     "start": 58.421,
+     "end": 58.561
+    },
+    {
+     "word": "crying",
+     "start": 58.601,
+     "end": 58.841
+    },
+    {
+     "word": "too,\"",
+     "start": 58.881,
+     "end": 59.041
+    },
+    {
+     "word": "she",
+     "start": 59.321,
+     "end": 59.421
+    },
+    {
+     "word": "said.",
+     "start": 59.461,
+     "end": 59.601
+    }
+   ]
+  },
+  {
+   "index": 26,
+   "text": "The second blizzard buried the whole block.",
+   "start": 59.702,
+   "end": 61.041,
+   "words": [
+    {
+     "word": "The",
+     "start": 59.702,
+     "end": 59.782
+    },
+    {
+     "word": "second",
+     "start": 59.822,
+     "end": 60.022
+    },
+    {
+     "word": "blizzard",
+     "start": 60.062,
+     "end": 60.282
+    },
+    {
+     "word": "buried",
+     "start": 60.342,
+     "end": 60.542
+    },
+    {
+     "word": "the",
+     "start": 60.562,
+     "end": 60.622
+    },
+    {
+     "word": "whole",
+     "start": 60.642,
+     "end": 60.782
+    },
+    {
+     "word": "block.",
+     "start": 60.802,
+     "end": 60.982
+    }
+   ]
+  },
+  {
+   "index": 27,
+   "text": "We don't chew gum at movies anymore.",
+   "start": 61.121,
+   "end": 62.523,
+   "words": [
+    {
+     "word": "We",
+     "start": 61.181,
+     "end": 61.221
+    },
+    {
+     "word": "don't",
+     "start": 61.241,
+     "end": 61.381
+    },
+    {
+     "word": "chew",
+     "start": 61.421,
+     "end": 61.581
+    },
+    {
+     "word": "gum",
+     "start": 61.601,
+     "end": 61.741
+    },
+    {
+     "word": "at",
+     "start": 61.781,
+     "end": 61.881
+    },
+    {
+     "word": "movies",
+     "start": 61.921,
+     "end": 62.161
+    },
+    {
+     "word": "anymore.",
+     "start": 62.201,
+     "end": 62.501
+    }
+   ]
+  },
+  {
+   "index": 28,
+   "text": "We just shovel.",
+   "start": 62.603,
+   "end": 63.132,
+   "words": [
+    {
+     "word": "We",
+     "start": 62.643,
+     "end": 62.683
+    },
+    {
+     "word": "just",
+     "start": 62.723,
+     "end": 62.823
+    },
+    {
+     "word": "shovel.",
+     "start": 62.863,
+     "end": 63.083
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,432 @@
+{
+ "touring-motorcycle-3b1ad3": {
+  "title": "Touring Motorcycle",
+  "class": "vehicle",
+  "kit": "roadside-americana-50d40c",
+  "size_m": {
+   "x": 0.94,
+   "y": 1.18,
+   "z": 2.34
+  },
+  "rigged": {
+   "wheel-f": {
+    "axis": "x",
+    "range": [
+     0,
+     40
+    ]
+   },
+   "steer-f": {
+    "axis": "y",
+    "range": [
+     0,
+     30
+    ]
+   },
+   "wheel-r": {
+    "axis": "x",
+    "range": [
+     0,
+     40
+    ]
+   }
+  },
+  "night": {
+   "headlamp": {
+    "color": "#fff4dc",
+    "intensity": 1,
+    "albedo": "#dce4e8",
+    "findable": true,
+    "describe": "the big round headlamp in the nacelle and the bullet lamp on the front fender"
+   },
+   "tail": {
+    "color": "#ff3b2e",
+    "intensity": 0.6,
+    "albedo": "#5e3027",
+    "findable": true,
+    "describe": "the round tail lamp on the rear fender under the plate"
+   }
+  },
+  "describe": "1950s V-twin touring motorcycle, 2.3 m long: a teardrop fuel tank, deep valanced front fender, a chrome headlamp nacelle and wide handlebars, a sprung solo saddle, fringed leather saddlebags and fishtail exhausts, side stand down."
+ },
+ "rubber-duck-e41831": {
+  "title": "Rubber Duck",
+  "class": "prop",
+  "kit": null,
+  "size_m": {
+   "x": 0.09,
+   "y": 0.1,
+   "z": 0.1
+  },
+  "rigged": {},
+  "night": null,
+  "describe": "Real-world scale at 0.09 x 0.1 x 0.1 m, 600 triangles on one material."
+ },
+ "furnace-golem-base": {
+  "title": "Furnace-Mouthed Lava Golem",
+  "class": "animal",
+  "kit": null,
+  "size_m": {
+   "x": 3.39,
+   "y": 2.41,
+   "z": 0.95
+  },
+  "rigged": {
+   "Head": {
+    "axis": "y",
+    "range": [
+     0,
+     30
+    ]
+   },
+   "Neck": {
+    "axis": "x",
+    "range": [
+     0,
+     12
+    ]
+   },
+   "Spine1": {
+    "axis": "x",
+    "range": [
+     0,
+     15
+    ]
+   },
+   "Spine2": {
+    "axis": "y",
+    "range": [
+     0,
+     12
+    ]
+   },
+   "LeftArm": {
+    "axis": "z",
+    "range": [
+     0,
+     -70
+    ]
+   },
+   "RightArm": {
+    "axis": "z",
+    "range": [
+     0,
+     70
+    ]
+   },
+   "LeftForeArm": {
+    "axis": "y",
+    "range": [
+     0,
+     -90
+    ]
+   },
+   "RightForeArm": {
+    "axis": "y",
+    "range": [
+     0,
+     90
+    ]
+   },
+   "LeftHand": {
+    "axis": "z",
+    "range": [
+     0,
+     -30
+    ]
+   },
+   "RightHand": {
+    "axis": "z",
+    "range": [
+     0,
+     30
+    ]
+   },
+   "LeftUpLeg": {
+    "axis": "x",
+    "range": [
+     0,
+     -60
+    ]
+   },
+   "RightUpLeg": {
+    "axis": "x",
+    "range": [
+     0,
+     -60
+    ]
+   },
+   "LeftLeg": {
+    "axis": "x",
+    "range": [
+     0,
+     90
+    ]
+   },
+   "RightLeg": {
+    "axis": "x",
+    "range": [
+     0,
+     90
+    ]
+   },
+   "LeftFoot": {
+    "axis": "x",
+    "range": [
+     0,
+     25
+    ]
+   },
+   "RightFoot": {
+    "axis": "x",
+    "range": [
+     0,
+     25
+    ]
+   }
+  },
+  "night": null,
+  "describe": "Hulking lava spitter, 2.4m tall, a heavy body with dark rock-like skin cracked with glowing magma, a wide head with a mouth like a furnace door, thick short arms, a swollen glowing throat, drips of lava from the chin, thick legs with scorched feet."
+ },
+ "pigeon-base": {
+  "title": "Pigeon",
+  "class": "animal",
+  "kit": null,
+  "size_m": {
+   "x": 0.15,
+   "y": 0.29,
+   "z": 0.3
+  },
+  "rigged": {
+   "Head": {
+    "axis": "y",
+    "range": [
+     0,
+     35
+    ]
+   },
+   "Neck": {
+    "axis": "x",
+    "range": [
+     0,
+     22
+    ]
+   },
+   "Tail": {
+    "axis": "x",
+    "range": [
+     0,
+     24
+    ]
+   },
+   "TailTip": {
+    "axis": "x",
+    "range": [
+     0,
+     12
+    ]
+   },
+   "LeftWing": {
+    "axis": "z",
+    "range": [
+     0,
+     -24
+    ]
+   },
+   "RightWing": {
+    "axis": "z",
+    "range": [
+     0,
+     24
+    ]
+   },
+   "LeftWingTip": {
+    "axis": "x",
+    "range": [
+     0,
+     15
+    ]
+   },
+   "RightWingTip": {
+    "axis": "x",
+    "range": [
+     0,
+     15
+    ]
+   },
+   "LeftUpLeg": {
+    "axis": "x",
+    "range": [
+     0,
+     -30
+    ]
+   },
+   "RightUpLeg": {
+    "axis": "x",
+    "range": [
+     0,
+     -30
+    ]
+   },
+   "LeftLeg": {
+    "axis": "x",
+    "range": [
+     0,
+     32
+    ]
+   },
+   "RightLeg": {
+    "axis": "x",
+    "range": [
+     0,
+     32
+    ]
+   }
+  },
+  "night": null,
+  "describe": "Low-poly pigeon with editable proportions and authored animations. Animals v2. Real-world scale at 0.15 x 0.29 x 0.3 m, 2,328 triangles on one material."
+ },
+ "public-school-19ade5": {
+  "title": "Public School",
+  "class": "building",
+  "kit": "nyc-city-kit-fbca88",
+  "size_m": {
+   "x": 20,
+   "y": 13.2,
+   "z": 12
+  },
+  "rigged": {
+   "door-left": {
+    "axis": "y",
+    "range": [
+     0,
+     100
+    ]
+   },
+   "door-right": {
+    "axis": "y",
+    "range": [
+     0,
+     -100
+    ]
+   },
+   "roof-hatch": {
+    "axis": "x",
+    "range": [
+     0,
+     -100
+    ]
+   }
+  },
+  "night": {
+   "glass": {
+    "color": "#ffd9a0",
+    "intensity": 0.7,
+    "albedo": "#2f3f52",
+    "findable": true,
+    "describe": "Classroom windows and the front door lights, lit warm amber after dark."
+   }
+  },
+  "describe": "Collegiate gothic public school, footprint exactly 20x12m, centred, front to +Z; 4 floors at exactly 3m each (roof line at 12m) plus a crenellated parapet of square merlons with stone coping to 13.2m; five 4m bays."
+ },
+ "fire-lookout-tower-75a129": {
+  "title": "Fire Lookout Tower",
+  "class": "building",
+  "kit": "nature-forest-kit-f29d6a",
+  "size_m": {
+   "x": 4,
+   "y": 8.6,
+   "z": 4
+  },
+  "rigged": {
+   "door": {
+    "axis": "y",
+    "range": [
+     0,
+     -35
+    ]
+   }
+  },
+  "night": {
+   "pane": {
+    "color": "#f0c05a",
+    "intensity": 0.7,
+    "albedo": "#3f4d55",
+    "findable": true,
+    "describe": "lamp burning in the watch cabin, seen through the glazed band"
+   }
+  },
+  "describe": "Forest fire lookout tower on a 4m by 2m footprint (two modules) with flat side walls at the footprint edges, four braced timber legs rising to a small glazed watch cabin with a railed catwalk and a shallow hipped roof, straight ladder run up one leg."
+ },
+ "yellow-school-bus-0fd3b6": {
+  "title": "Yellow School Bus",
+  "class": "vehicle",
+  "kit": "neighborhood-pathways-kit-a992cf",
+  "size_m": {
+   "x": 2.47,
+   "y": 2.81,
+   "z": 8.11
+  },
+  "rigged": {
+   "wheel-fl": {
+    "axis": "x",
+    "range": [
+     0,
+     180
+    ]
+   },
+   "wheel-fr": {
+    "axis": "x",
+    "range": [
+     0,
+     180
+    ]
+   },
+   "wheel-rl": {
+    "axis": "x",
+    "range": [
+     0,
+     180
+    ]
+   },
+   "wheel-rr": {
+    "axis": "x",
+    "range": [
+     0,
+     180
+    ]
+   },
+   "steer-fl": {
+    "axis": "y",
+    "range": [
+     0,
+     32
+    ]
+   },
+   "steer-fr": {
+    "axis": "y",
+    "range": [
+     0,
+     32
+    ]
+   }
+  },
+  "night": {
+   "headlight": {
+    "color": "#fff4de",
+    "intensity": 1,
+    "albedo": null,
+    "findable": false,
+    "describe": "the two rectangular headlamps burning hard white, and the pair of white reversing lamps low on the rear face"
+   },
+   "taillight": {
+    "color": "#e8452f",
+    "intensity": 0.55,
+    "albedo": "#8e3a2e",
+    "findable": true,
+    "describe": "the red half of each roof-corner warning cluster front and rear, and the red rear round lamps, dim red"
+   }
+  },
+  "describe": "Short suburban school bus about 8m long, a flat-fronted yellow body with a black rub rail, ranked square windows, a folding entry door, a stop-arm paddle on the driver side and a roof hatch; stop-arm knob folded or swung out, door knob open or closed."
+ }
+}

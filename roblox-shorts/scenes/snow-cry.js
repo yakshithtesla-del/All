@@ -120,7 +120,7 @@ export default {
     })
     const buses = []
     for (let i = 0; i < 3; i++) {
-      const b = model('yellow-school-bus-0fd3b6', { height: 4.6 }); b.position.set(P.hill - 10 + i * 10, -0.1, -13); b.rotation.y = D(90); b.visible = false; scene.add(b); buses.push(b)
+      const b = model('yellow-school-bus-0fd3b6', { height: 4.2 }); b.position.set(P.hill - 16 + i * 16, -0.1, -13); b.rotation.y = D(90); b.visible = false; scene.add(b); buses.push(b)
     }
     const snowHeap = new T.Group()
     for (let i = 0; i < 7; i++) {

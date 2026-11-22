@@ -52,7 +52,7 @@ if (cmd === 'preview') {
   await new Promise((r) => server.listen(0, '127.0.0.1', r))   // 127.0.0.1, not localhost: on Windows localhost can resolve to IPv6 (::1) and the page load aborts
   const gl = process.platform === 'darwin' ? '--use-angle=metal' : '--use-angle=swiftshader'
   let browser
-  try { browser = await puppeteer.launch({ headless: true, protocolTimeout: 600000, args: ['--enable-webgl', '--ignore-gpu-blocklist', gl, '--enable-unsafe-swiftshader', '--autoplay-policy=no-user-gesture-required'] }) }
+  try { browser = await puppeteer.launch({ headless: true, protocolTimeout: 600000, args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--enable-webgl', '--ignore-gpu-blocklist', gl, '--enable-unsafe-swiftshader', '--autoplay-policy=no-user-gesture-required'] }) }
   catch (e) { console.error(`FAIL: the rendering browser could not start (${String(e.message).split('\n')[0]}). Run: node setup.mjs   (it installs the browser), then run the same command again.`); process.exit(1) }
   const page = await browser.newPage()
   // Missing optional files (no voice yet, favicon) show up as 404s: not worth reporting.

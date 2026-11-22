@@ -2,6 +2,9 @@ name: Render Part 1 - The Thing Outside (CI fast 540x960)
 
 on:
   workflow_dispatch:
+  push:
+    tags:
+      - 'part1-*'
 
 concurrency:
   group: part1-render

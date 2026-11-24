@@ -1,0 +1,140 @@
+name: Repair Sorry-Bread segment and stitch
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [render/sorry-bread]
+    paths:
+      - '.github/workflows/render-sorry-bread-repair-stitch.yml'
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: sorry-bread-repair-stitch
+  cancel-in-progress: false
+
+jobs:
+  render-missing-segment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Checkout repaired scene
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: roblox-shorts/package-lock.json
+
+      - name: Install browser libraries and ffmpeg
+        run: |
+          sudo apt-get update -qq
+          ALSA=$(apt-cache show libasound2t64 >/dev/null 2>&1 && echo libasound2t64 || echo libasound2)
+          sudo apt-get install -y -qq \
+            libnss3 libatk-bridge2.0-0 libgtk-3-0 libgbm1 "$ALSA" \
+            libxss1 libx11-xcb1 libxcomposite1 libxdamage1 libxrandr2 \
+            libpango-1.0-0 libcairo2 libatspi2.0-0 libcups2 libdrm2 ffmpeg
+
+      - name: Install render packages
+        working-directory: roblox-shorts
+        run: npm ci --no-audit --no-fund
+
+      - name: Install Chrome
+        working-directory: roblox-shorts
+        run: npx puppeteer browsers install chrome
+
+      - name: Check story and repaired scene
+        working-directory: roblox-shorts
+        run: node render.mjs check
+
+      - name: Render failed segment 2 only (27.792s–41.667s)
+        working-directory: roblox-shorts
+        run: |
+          node render.mjs video \
+            --from 27.792 \
+            --until 41.667 \
+            --out out/seg-2.mp4 --silent
+          cp out/sfx-events.json out/sfx-events-2.json
+
+      - name: Upload repaired segment
+        uses: actions/upload-artifact@v4
+        with:
+          name: sorry-bread-repair-segment-2
+          path: |
+            roblox-shorts/out/seg-2.mp4
+            roblox-shorts/out/sfx-events-2.json
+          retention-days: 30
+          if-no-files-found: error
+
+  stitch-all-segments-with-audio:
+    needs: render-missing-segment
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout story and stitch tool
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: roblox-shorts/package-lock.json
+
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+
+      - name: Install render packages
+        working-directory: roblox-shorts
+        run: npm ci --no-audit --no-fund
+
+      - name: Download the 3 successful segments from the first fresh run
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 45358365429
+          github-token: ${{ github.token }}
+          pattern: sorry-bread-segment-*
+          merge-multiple: true
+          path: previous-segments
+
+      - name: Download the repaired segment from this run
+        uses: actions/download-artifact@v4
+        with:
+          name: sorry-bread-repair-segment-2
+          path: repaired-segment
+
+      - name: Assemble all four segments
+        run: |
+          mkdir -p roblox-shorts/out/segments
+          cp previous-segments/seg-0.mp4 previous-segments/sfx-events-0.json roblox-shorts/out/segments/
+          cp previous-segments/seg-1.mp4 previous-segments/sfx-events-1.json roblox-shorts/out/segments/
+          cp repaired-segment/seg-2.mp4 repaired-segment/sfx-events-2.json roblox-shorts/out/segments/
+          cp previous-segments/seg-3.mp4 previous-segments/sfx-events-3.json roblox-shorts/out/segments/
+
+      - name: Join video and restore voice, music and sound effects
+        working-directory: roblox-shorts
+        run: node audio/stitch.mjs out/segments out/video.mp4
+
+      - name: Verify final 1080x1920 MP4
+        working-directory: roblox-shorts
+        run: |
+          ffprobe -v error -show_entries format=duration,size:stream=codec_name,width,height,sample_rate,channels \
+            -of default=nw=1 out/video.mp4
+          test "$(ffprobe -v error -select_streams v:0 -show_entries stream=width -of csv=p=0 out/video.mp4)" = "1080"
+          test "$(ffprobe -v error -select_streams v:0 -show_entries stream=height -of csv=p=0 out/video.mp4)" = "1920"
+
+      - name: Upload final video and SFX plan
+        uses: actions/upload-artifact@v4
+        with:
+          name: sorry-bread-final-1080x1920
+          path: |
+            roblox-shorts/out/video.mp4
+            roblox-shorts/out/sfx-plan.json
+          retention-days: 30
+          if-no-files-found: error

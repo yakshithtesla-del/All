@@ -105,6 +105,7 @@ if (cmd === 'preview') {
     fs.mkdirSync(path.join(ROOT, 'out'), { recursive: true })
     const opt = (name) => { const i = process.argv.indexOf(name); return i > 0 ? process.argv[i + 1] : null }
     const silent = process.argv.includes('--silent')
+    const from = opt('--from') ? Math.max(0, Number(opt('--from'))) : 0
     const until = opt('--until') ? Math.min(DUR, Number(opt('--until'))) : DUR
     const voice = !silent && fs.existsSync(path.join(ROOT, 'voice/voice.mp3')) ? path.join(ROOT, 'voice/voice.mp3') : null
     const music = !silent && story.music && fs.existsSync(path.resolve(ROOT, story.music)) ? path.resolve(ROOT, story.music) : null
@@ -122,10 +123,10 @@ if (cmd === 'preview') {
     // 2. the picture, rendered silent; the directing helpers log what appears on screen as it goes (for the sound effects)
     const outFile = opt('--out') ? path.resolve(opt('--out')) : path.join(ROOT, 'out', 'video.mp4')
     const partFile = outFile.replace(/\.mp4$/, '') + '.part.mp4', pictureFile = outFile.replace(/\.mp4$/, '') + '.picture.mp4'
-    const args = ['-v', 'error', '-y', '-f', 'image2pipe', '-c:v', 'mjpeg', '-framerate', String(FPS), '-i', '-', '-t', until.toFixed(3), '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '18', '-preset', 'medium', '-movflags', '+faststart', pictureFile]
+    const args = ['-v', 'error', '-y', '-f', 'image2pipe', '-c:v', 'mjpeg', '-framerate', String(FPS), '-i', '-', '-t', (until - from).toFixed(3), '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '18', '-preset', 'medium', '-movflags', '+faststart', pictureFile]
     const ff = spawn(FF, args, { stdio: ['pipe', 'inherit', 'inherit'] })
     const N = Math.round(until * FPS), clips = [], events = []
-    for (let n = 0; n < N; n++) {
+    for (let n = Math.round(from * FPS); n < N; n++) {
       const buf = Buffer.from(await frame(n / FPS), 'base64')
       const [issues, ev] = await page.evaluate(() => [window.FK_ISSUES ?? [], window.FK_EVENTS ?? []])
       if (issues.length) { const b = BEATS.filter((x) => x.start <= n / FPS + 1e-6).pop(); clips.push({ t: n / FPS, beat: (b?.index ?? 0) + 1, issues }) }
@@ -143,6 +144,8 @@ if (cmd === 'preview') {
       for (const c of clips) { const k = c.beat + c.issues.join('|'); if (k !== last) console.log(`CLIP at ${c.t.toFixed(2)}s (beat ${c.beat}): ${c.issues.join('; ')}`); last = k }
       process.exitCode = 1
     } else if (code === 0) {
+      // Sharded CI renders merge each segment's event list before building the soundtrack.
+      if (opt('--from')) fs.writeFileSync(path.join(ROOT, 'out', 'sfx-events.json'), JSON.stringify(events.filter((e) => e.at <= until)))
       // 3. the sound effects (one per thing that appears, out/sfx-plan.json), mixed onto the soundtrack, then picture + sound
       let audio = base
       if (base && story.sfx !== false) {

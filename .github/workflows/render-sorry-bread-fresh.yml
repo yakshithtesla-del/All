@@ -1,0 +1,200 @@
+name: Render Sorry-Bread Short (fresh 1080p run)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [render/sorry-bread]
+    paths:
+      - 'roblox-shorts/story.json'
+      - 'roblox-shorts/voice/**'
+      - 'roblox-shorts/scenes/sorry-bread.js'
+      - 'roblox-shorts/engine.js'
+      - 'roblox-shorts/render.mjs'
+      - 'roblox-shorts/audio/stitch.mjs'
+      - '.github/workflows/render-sorry-bread-fresh.yml'
+
+concurrency:
+  group: sorry-bread-fresh-render
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    outputs:
+      matrix: ${{ steps.segments.outputs.matrix }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: roblox-shorts/package-lock.json
+
+      - name: Install browser libraries and ffmpeg
+        run: |
+          sudo apt-get update -qq
+          ALSA=$(apt-cache show libasound2t64 >/dev/null 2>&1 && echo libasound2t64 || echo libasound2)
+          sudo apt-get install -y -qq \
+            libnss3 libatk-bridge2.0-0 libgtk-3-0 libgbm1 "$ALSA" \
+            libxss1 libx11-xcb1 libxcomposite1 libxdamage1 libxrandr2 \
+            libpango-1.0-0 libcairo2 libatspi2.0-0 libcups2 libdrm2 ffmpeg
+
+      - name: Install render packages
+        working-directory: roblox-shorts
+        run: npm ci --no-audit --no-fund
+
+      - name: Install Chrome
+        working-directory: roblox-shorts
+        run: npx puppeteer browsers install chrome
+
+      - name: Check story and scene
+        working-directory: roblox-shorts
+        run: node render.mjs check
+
+      - name: Preflight framing and collisions
+        working-directory: roblox-shorts
+        run: |
+          TIMES=$(node -e '
+            const t = require("./voice/timing.json"), lines = t.lines ?? t;
+            const xs = [];
+            for (const l of lines) {
+              const s = l.start ?? l.begin ?? 0, e = l.end ?? (s + (l.dur ?? 0));
+              if (s > 0.05) xs.push(s - 0.17);
+              xs.push(s + 0.15, (s + e) / 2, e - 0.15);
+            }
+            console.log([...new Set(xs.map(x => Math.max(0, x).toFixed(2)))].join(","));
+          ')
+          node render.mjs stills "$TIMES" > preflight.log 2>&1 || true
+          if grep -Eq 'ISSUE|CLIP|REFUSED' preflight.log; then
+            grep -E 'ISSUE|CLIP|REFUSED|MOVED:' preflight.log | tail -100
+            exit 1
+          fi
+          echo "Preflight passed: sampled every spoken line and transition."
+
+      - name: Calculate four frame-aligned segments
+        id: segments
+        working-directory: roblox-shorts
+        run: |
+          MATRIX=$(node -e '
+            const t = require("./voice/timing.json"), lines = t.lines ?? t;
+            const dur = t.duration ?? lines[lines.length - 1].end;
+            const fps = 24, frames = Math.round(dur * fps), count = 4, parts = [];
+            for (let i = 0; i < count; i++) {
+              const a = Math.round(frames * i / count), b = Math.round(frames * (i + 1) / count);
+              parts.push({id:i, from:(a/fps).toFixed(3), to:(b/fps).toFixed(3)});
+            }
+            process.stdout.write(JSON.stringify(parts));
+          ')
+          echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
+
+  render:
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      matrix:
+        segment: ${{ fromJSON(needs.prepare.outputs.matrix) }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: roblox-shorts/package-lock.json
+
+      - name: Install browser libraries and ffmpeg
+        run: |
+          sudo apt-get update -qq
+          ALSA=$(apt-cache show libasound2t64 >/dev/null 2>&1 && echo libasound2t64 || echo libasound2)
+          sudo apt-get install -y -qq \
+            libnss3 libatk-bridge2.0-0 libgtk-3-0 libgbm1 "$ALSA" \
+            libxss1 libx11-xcb1 libxcomposite1 libxdamage1 libxrandr2 \
+            libpango-1.0-0 libcairo2 libatspi2.0-0 libcups2 libdrm2 ffmpeg
+
+      - name: Install render packages
+        working-directory: roblox-shorts
+        run: npm ci --no-audit --no-fund
+
+      - name: Install Chrome
+        working-directory: roblox-shorts
+        run: npx puppeteer browsers install chrome
+
+      - name: Render segment ${{ matrix.segment.id }}
+        working-directory: roblox-shorts
+        run: |
+          node render.mjs video \
+            --from ${{ matrix.segment.from }} \
+            --until ${{ matrix.segment.to }} \
+            --out out/seg-${{ matrix.segment.id }}.mp4 --silent
+          cp out/sfx-events.json out/sfx-events-${{ matrix.segment.id }}.json
+
+      - name: Upload rendered segment
+        uses: actions/upload-artifact@v4
+        with:
+          name: sorry-bread-segment-${{ matrix.segment.id }}
+          path: |
+            roblox-shorts/out/seg-${{ matrix.segment.id }}.mp4
+            roblox-shorts/out/sfx-events-${{ matrix.segment.id }}.json
+          retention-days: 7
+          if-no-files-found: error
+
+  stitch:
+    needs: [prepare, render]
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: roblox-shorts/package-lock.json
+
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+
+      - name: Install render packages
+        working-directory: roblox-shorts
+        run: npm ci --no-audit --no-fund
+
+      - name: Download video segments
+        uses: actions/download-artifact@v4
+        with:
+          pattern: sorry-bread-segment-*
+          merge-multiple: true
+          path: artifacts
+
+      - name: Join segments and add saved voice, music and SFX
+        working-directory: roblox-shorts
+        run: node audio/stitch.mjs ../artifacts out/video.mp4
+
+      - name: Verify final video
+        working-directory: roblox-shorts
+        run: |
+          ffprobe -v error -show_entries format=duration,size:stream=codec_name,width,height,sample_rate,channels \
+            -of default=nw=1 out/video.mp4
+          test "$(ffprobe -v error -select_streams v:0 -show_entries stream=width -of csv=p=0 out/video.mp4)" = "1080"
+          test "$(ffprobe -v error -select_streams v:0 -show_entries stream=height -of csv=p=0 out/video.mp4)" = "1920"
+
+      - name: Upload final MP4
+        uses: actions/upload-artifact@v4
+        with:
+          name: sorry-bread-1080x1920-mp4
+          path: |
+            roblox-shorts/out/video.mp4
+            roblox-shorts/out/sfx-plan.json
+          retention-days: 30
+          if-no-files-found: error

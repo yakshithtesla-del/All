@@ -18,6 +18,3 @@ audio/_cache/
 # generated stems are regenerable and only bloat the repo
 public/audio/stem_*.wav
 public/molasses/audio/stem_*.wav
-
-# local secrets (never commit)
-**/.env

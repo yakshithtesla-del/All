@@ -349,7 +349,6 @@ export default {
       // Thunder. A 20-foot loaf burst up from the street.
       setMood('dusk')
       const n = cut('Thunder', 'burst')
-      d.show(kid, 0, 0, 2, 0, 'shock')
       S.loaf.visible = true
       if (n === 0) {
         d.shake('Thunder', 0.6, 0.4); d.burst('sparkle', 'Thunder', [-24, 30, -18], { n: 18, size: 1.2, color: '#ffffff', spread: 8 })

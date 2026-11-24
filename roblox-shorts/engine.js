@@ -7,7 +7,7 @@ import * as util from './lib/util.js'
 import { shapes, drawCharacter, basicPainter } from './lib/kit2d.js'
 import { makeCharacter } from './lib/kit3d.js'
 
-const SIZES = { vertical: [540, 960], wide: [960, 540], square: [720, 720] }
+const SIZES = { vertical: [1080, 1920], wide: [1920, 1080], square: [1080, 1080] }
 
 async function json(url) {
   const r = await fetch(url, { cache: 'no-store' })

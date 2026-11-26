@@ -86,22 +86,20 @@ jobs:
         working-directory: roblox-shorts
         run: |
           VIDEO=out/storm-shield-final.mp4
-          ffprobe -v error -show_entries format=duration,size:stream=codec_name,codec_type,width,height,sample_rate,channels -of default=nw=1 "$VIDEO"
-          VCODEC=$(ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of csv=p=0 "$VIDEO")
-          ACODEC=$(ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of csv=p=0 "$VIDEO")
-          WIDTH=$(ffprobe -v error -select_streams v:0 -show_entries stream=width -of csv=p=0 "$VIDEO")
-          HEIGHT=$(ffprobe -v error -select_streams v:0 -show_entries stream=height -of csv=p=0 "$VIDEO")
-          DURATION=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$VIDEO")
-          test "$VCODEC" = "h264"
-          test "$ACODEC" = "aac"
-          test "$WIDTH" = "1080"
-          test "$HEIGHT" = "1920"
-          python3 - "$DURATION" <<'PY'
-          import sys
-          d = float(sys.argv[1])
-          if not (85 <= d <= 92):
-              raise SystemExit(f"unexpected duration: {d}")
-          PY
+          field() {
+            ffprobe -v error -select_streams "$1" -show_entries "stream=$2" -of csv=p=0 "$VIDEO" 2>/dev/null | head -n 1 | tr -d '[:space:]'
+          }
+          VCODEC=$(field v:0 codec_name)
+          ACODEC=$(field a:0 codec_name)
+          WIDTH=$(field v:0 width)
+          HEIGHT=$(field v:0 height)
+          DURATION=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$VIDEO" 2>/dev/null | head -n 1 | tr -d '[:space:]')
+          echo "codecs: ${VCODEC}/${ACODEC}; size: ${WIDTH}x${HEIGHT}; duration: ${DURATION}s"
+          [ "$VCODEC" = "h264" ] || { echo "bad video codec: $VCODEC"; exit 1; }
+          [ "$ACODEC" = "aac" ] || { echo "bad audio codec: $ACODEC"; exit 1; }
+          [ "$WIDTH" = "1080" ] || { echo "bad width: $WIDTH"; exit 1; }
+          [ "$HEIGHT" = "1920" ] || { echo "bad height: $HEIGHT"; exit 1; }
+          awk -v d="$DURATION" 'BEGIN { if (d < 85 || d > 92) exit 1 }' || { echo "bad duration: $DURATION"; exit 1; }
           echo "Verified: 1080x1920, H.264, AAC, ${DURATION}s."
 
       - name: Upload final MP4

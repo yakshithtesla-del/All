@@ -14,14 +14,14 @@ jobs:
       - name: Install Blender, FFmpeg and Python deps
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq blender ffmpeg python3-pip
+          sudo apt-get install -y -qq blender ffmpeg python3-pip python3-numpy
           python3 -m pip install --break-system-packages -r in-this-town/requirements.txt
+          BLENDER_PYTHONPATH=$(python3 -c "import numpy,os; print(os.path.dirname(os.path.dirname(numpy.__file__)))")
+          echo "PYTHONPATH=$BLENDER_PYTHONPATH" >> "$GITHUB_ENV"
+          blender -b --python-expr 'import numpy; print("NumPy available in Blender", numpy.__version__)'
           sudo apt-get install -y -qq fonts-dejavu-core fonts-liberation
           sudo mkdir -p /usr/share/fonts/truetype/msttcorefonts
           sudo ln -sf /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf /usr/share/fonts/truetype/msttcorefonts/seguibl.ttf
-          BLENDER_PY=$(blender -b --python-expr 'import sys; print(sys.executable)' 2>&1 | grep -E '^/.*python' | tail -1)
-          "$BLENDER_PY" -m ensurepip --upgrade || true
-          "$BLENDER_PY" -m pip install numpy
       - name: Render video with voice, music and SFX
         working-directory: in-this-town
         env:

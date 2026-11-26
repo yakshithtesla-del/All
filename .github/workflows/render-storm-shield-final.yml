@@ -2,6 +2,10 @@ name: Render Storm-Shield Final (single full 1080x1920 render with audio)
 
 on:
   workflow_dispatch:
+  push:
+    branches: [render/sorry-bread]
+    paths:
+      - '.github/workflows/render-storm-shield-final.yml'
 
 concurrency:
   group: storm-shield-final

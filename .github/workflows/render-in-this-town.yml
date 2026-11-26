@@ -19,6 +19,9 @@ jobs:
           sudo apt-get install -y -qq fonts-dejavu-core fonts-liberation
           sudo mkdir -p /usr/share/fonts/truetype/msttcorefonts
           sudo ln -sf /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf /usr/share/fonts/truetype/msttcorefonts/seguibl.ttf
+          BLENDER_PY=$(blender -b --python-expr 'import sys; print(sys.executable)' 2>&1 | grep -E '^/.*python' | tail -1)
+          "$BLENDER_PY" -m ensurepip --upgrade || true
+          "$BLENDER_PY" -m pip install numpy
       - name: Render video with voice, music and SFX
         working-directory: in-this-town
         env:

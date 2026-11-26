@@ -14,7 +14,7 @@ jobs:
       - name: Install Blender, FFmpeg and Python deps
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq ffmpeg python3-pip python3-numpy xz-utils
+          sudo apt-get install -y -qq ffmpeg python3-pip python3-numpy xz-utils libegl1 libgl1 libglx-mesa0 libx11-6 libxrender1 libxi6 libxfixes3 libxkbcommon0 libwayland-client0
           curl -fsSL https://download.blender.org/release/Blender4.5/blender-4.5.17-linux-x64.tar.xz -o /tmp/blender.tar.xz
           tar -xf /tmp/blender.tar.xz -C /tmp
           echo "/tmp/blender-4.5.17-linux-x64" >> "$GITHUB_PATH"

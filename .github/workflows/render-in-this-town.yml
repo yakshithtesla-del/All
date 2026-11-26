@@ -1,0 +1,38 @@
+name: Render In This Town - Cake Lamp
+on:
+  workflow_dispatch:
+  push:
+    paths: ['in-this-town/**', '.github/workflows/render-in-this-town.yml']
+concurrency:
+  group: in-this-town-cake-lamp
+  cancel-in-progress: false
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender, FFmpeg and Python deps
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq blender ffmpeg python3-pip
+          python3 -m pip install --break-system-packages -r in-this-town/requirements.txt
+      - name: Render video with voice, music and SFX
+        working-directory: in-this-town
+        env:
+          PLANET_CHUNK: 150
+          PLANET_COOL: 45
+        run: |
+          python3 town/make.py town/stories/cake_lamp.json
+      - name: Verify final MP4
+        run: |
+          ls -lh in-this-town/town/build/cake_lamp/FINAL.mp4
+          ffprobe -v error -show_entries format=duration,size:stream=codec_name,width,height,sample_rate,channels -of default=nw=1 in-this-town/town/build/cake_lamp/FINAL.mp4
+      - uses: actions/upload-artifact@v4
+        with:
+          name: in-this-town-cake-lamp
+          path: |
+            in-this-town/town/build/cake_lamp/FINAL.mp4
+            in-this-town/town/build/cake_lamp/FINAL.credits.txt
+            in-this-town/town/stories/cake_lamp.upload.txt
+          retention-days: 14

@@ -1,0 +1,7 @@
+# plain-Python steps (voice, captions, sound mix, sheets)
+numpy
+pillow
+edge-tts
+# optional: your own cloned voice (needs an NVIDIA GPU). Install these in a separate env and put its
+# python.exe in config.json "voxcpm_python":
+#   torch (CUDA build), voxcpm, soundfile, faster-whisper

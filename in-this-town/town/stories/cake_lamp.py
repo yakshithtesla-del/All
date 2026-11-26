@@ -240,6 +240,40 @@ def build(S):
     C["clown"] = S.add("clown", "clown", (-10.0, 3.0), "grin")
     C["guy"] = S.add("guy", "guy", (4.5, 4.5), "smile")
     C["teen"] = S.add("teen", "teen", (-8.0, 5.0), "smile")
+    # Birthday prop: a tall streetlamp-shaped cake with candles hidden in the frosting.
+    # Its parts are staged in the final reveal shots; keep the silhouette readable on a phone.
+    cake = PS.plastic("LampCake_Frosting", "#F5B8D4", 0.38)
+    cake_dark = PS.plastic("LampCake_Shadow", "#9B526C", 0.5)
+    icing = PS.plastic("LampCake_Icing", "#FFF0B3", 0.28)
+    candle_mat = PS.plastic("LampCake_Candle", "#FF6B6B", 0.35)
+    flame_mat = PS.emit("LampCake_Flame", "#FFE36E", 3.0)
+    root = bpy.data.objects.new("LampCake_Root", None)
+    bpy.context.scene.collection.objects.link(root)
+    C["lampcake_root"] = root
+    parts = []
+    # Main pole and broad base; all built at the origin and parented to one keyed root.
+    parts.append(rod("LampCake_Pole", (0, 0, 0), 0.34, 7.1, cake))
+    parts.append(rod("LampCake_Base", (0, 0, 0), 0.72, 0.25, cake_dark))
+    # Decorative icing bands and a big rounded lamp-head cake.
+    parts.append(rod("LampCake_Band1", (0, 0, 0), 0.39, 0.18, icing))
+    parts.append(rod("LampCake_Band2", (0, 0, 0), 0.39, 0.18, icing))
+    parts.append(ball("LampCake_Head", (0, 0, 0), 0.95, cake, (1.0, 1.0, 0.7)))
+    parts.append(ball("LampCake_Glaze", (0, 0, 0), 0.97, icing, (1.0, 1.0, 0.25)))
+    # Mini candles on the cake head.
+    candles = []
+    for i, x in enumerate((-0.47, 0.0, 0.47)):
+        candle = rod(f"LampCake_Candle{i}", (0, 0, 0), 0.09, 0.38, candle_mat)
+        flame = ball(f"LampCake_Flame{i}", (0, 0, 0), 0.12, flame_mat)
+        candles.extend((candle, flame))
+    parts.extend(candles)
+    for o in parts:
+        o.parent = root
+        o.matrix_parent_inverse = root.matrix_world.inverted()
+    C["lampcake"] = parts
+    hide_all(parts)
+    # A small icing blob that lands on Dad's nose in the punchline.
+    C["icing_blob"] = ball("BirthdayIcingBlob", (0, 0, -50), 0.24, icing, (1.2, 0.8, 0.65))
+    hide_all([C["icing_blob"]])
     g = gold()
     coins = [coin_obj(f"coin{i}", g) for i in range(34)]
     hide_all(coins)
@@ -407,5 +441,109 @@ def loop(S, C, a, b):
     S.on("loop", "hero", dist=5.0, h=-0.4, ang=6, lens=32, push=1.2)
 
 
-SHOTS = {"hook": hook, "rule": rule, "mailbox": dad, "bench": tickle, "cake": comic,
-         "flicker": clown, "lamp": rich, "icing": myself, "fork": haha, "tall": broke, "loop": loop}
+def mailbox(S, C, a, b):
+    S.only("mailbox", "hero")
+    C["hero"].place(a, (-14.0, -6.0), 0)
+    C["hero"].at(a + 0.05, "thinkchin", "smirk")
+    C["hero"].at(a + 0.5, "point", "happy")
+    S.camera("mailbox", (-15.5, -13.0, 4.8), (-14.0, -8.9, 2.6), 34,
+             to=(-15.1, -12.0, 4.5))
+
+
+def bench(S, C, a, b):
+    S.only("bench", "dad")
+    C["dad"].place(a, (22.0, 5.7), 0)
+    C["dad"].at(a + 0.05, "point", "deadpan")
+    C["dad"].at(a + 0.55, "nod", "smug")
+    S.camera("bench", (24.0, -2.0, 4.6), (22.0, 8.8, 2.7), 32,
+             to=(23.5, -1.1, 4.4))
+
+
+def cake(S, C, a, b):
+    S.only("cake", "mom", "hero")
+    C["mom"].place(a, (-2.0, 2.6), 0)
+    C["mom"].at(a + 0.05, "show", "smile")
+    C["hero"].place(a, (1.0, 3.7), 15)
+    C["hero"].at(a + 0.05, "cheer", "happy")
+    S.on("cake", "mom", dist=6.0, h=0.3, ang=18, lens=32, push=0.5)
+
+
+def flicker(S, C, a, b):
+    S.only("flicker", "hero", "dad")
+    C["hero"].place(a, (3.0, 3.0), 0)
+    C["hero"].at(a + 0.05, "shock", "shock")
+    C["dad"].place(a, (5.5, 4.6), 12)
+    C["dad"].at(a + 0.05, "lookdown", "sideeye")
+    # A real street lamp sits at x= -2, y=+10.4: camera stays outside it.
+    S.camera("flicker", (1.0, -7.0, 7.2), (-2.0, 9.9, 6.0), 26,
+             to=(0.0, -6.0, 6.8))
+
+
+def lamp(S, C, a, b):
+    S.only("lamp", "hero", "dad")
+    C["hero"].place(a, (-4.2, 1.5), 0)
+    C["hero"].at(a + 0.05, "scared", "shock")
+    C["dad"].place(a, (-1.0, 3.0), 0)
+    C["dad"].at(a + 0.05, "point", "shock")
+    # Reveal the cake-lamp prop in a phone-friendly medium close shot.
+    show(C["lampcake"], a, b)
+    key(C["lampcake_root"], "location", F(a), Vector((-2.0, 8.8, 0.0)))
+    C["lampcake_root"].keyframe_insert("location", frame=F(a))
+    S.camera("lamp", (-7.0, -7.0, 8.8), (-2.0, 8.6, 6.1), 33,
+             to=(-6.4, -6.0, 8.2))
+
+
+def icing(S, C, a, b):
+    S.only("icing", "dad")
+    C["dad"].place(a, (-1.0, 3.0), 0)
+    C["dad"].at(a + 0.05, "shock", "scared")
+    show([C["icing_blob"]], a, b)
+    key(C["icing_blob"], "location", F(a), Vector((-0.75, 1.0, 8.7)))
+    key(C["icing_blob"], "location", F(a + 0.38), Vector((-0.6, 2.3, 4.4)))
+    key(C["icing_blob"], "location", F(a + 0.72), Vector((-0.15, 2.65, 4.6)))
+    key(C["icing_blob"], "scale", F(a), (0.5, 0.5, 0.5))
+    key(C["icing_blob"], "scale", F(a + 0.32), (1.0, 1.0, 1.0))
+    S.on("icing", "dad", dist=4.8, h=0.2, ang=8, lens=36, push=0.5)
+
+
+def fork(S, C, a, b):
+    S.only("fork", "hero", "dad")
+    C["dad"].place(a, (-1.0, 3.0), 0)
+    C["dad"].at(a + 0.05, "holdout", "smug")
+    C["hero"].place(a, (-4.0, 4.4), 15)
+    C["hero"].at(a + 0.05, "facepalm", "smirk")
+    show(C["lampcake"], a, b)
+    key(C["lampcake_root"], "location", F(a), Vector((-2.0, 8.8, 0.0)))
+    S.camera("fork", (-7.0, -6.5, 7.3), (-2.0, 8.4, 5.8), 31,
+             to=(-6.3, -5.8, 7.0))
+
+
+def tall(S, C, a, b):
+    S.only("tall", "dad", "hero")
+    C["dad"].place(a, (-1.0, 3.0), 0)
+    C["dad"].at(a + 0.05, "holdout", "grin")
+    C["hero"].place(a, (-4.0, 4.4), 15)
+    C["hero"].at(a + 0.05, "shrug", "smirk")
+    show(C["lampcake"], a, b)
+    key(C["lampcake_root"], "location", F(a), Vector((-2.0, 8.8, 0.0)))
+    S.camera("tall", (-6.4, -6.0, 6.5), (-2.0, 8.4, 5.0), 32,
+             to=(-5.8, -5.3, 6.2))
+
+
+def loop(S, C, a, b):
+    # A wide little birthday tableau that cuts directly back to the opening hook.
+    S.only("loop", "hero", "dad", "mom", "kid")
+    C["hero"].place(a, (0.0, 1.5), 0)
+    C["hero"].at(a + 0.05, "wave", "smirk")
+    C["dad"].place(a, (4.0, 3.0), 0)
+    C["dad"].at(a + 0.05, "holdout", "grin")
+    C["mom"].place(a, (-4.0, 4.0), 15)
+    C["mom"].at(a + 0.05, "cheer", "smile")
+    C["kid"].place(a, (6.0, 4.0), -15)
+    C["kid"].at(a + 0.05, "wave", "grin")
+    S.camera("loop", (0.0, -13.0, 10.0), (0.0, 3.0, 3.2), 24,
+             to=(0.7, -11.0, 8.0))
+
+
+SHOTS = {"hook": hook, "rule": rule, "mailbox": mailbox, "bench": bench, "cake": cake,
+         "flicker": flicker, "lamp": lamp, "icing": icing, "fork": fork, "tall": tall, "loop": loop}

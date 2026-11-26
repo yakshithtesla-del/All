@@ -14,11 +14,18 @@ jobs:
       - name: Install Blender, FFmpeg and Python deps
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq blender ffmpeg python3-pip python3-numpy
+          sudo apt-get install -y -qq ffmpeg python3-pip python3-numpy xz-utils
+          curl -fsSL https://download.blender.org/release/Blender4.5/blender-4.5.17-linux-x64.tar.xz -o /tmp/blender.tar.xz
+          tar -xf /tmp/blender.tar.xz -C /tmp
+          echo "/tmp/blender-4.5.17-linux-x64" >> "$GITHUB_PATH"
+          echo "BLENDER=/tmp/blender-4.5.17-linux-x64/blender" >> "$GITHUB_ENV"
           python3 -m pip install --break-system-packages -r in-this-town/requirements.txt
           BLENDER_PYTHONPATH=$(python3 -c "import numpy,os; print(os.path.dirname(os.path.dirname(numpy.__file__)))")
-          echo "PYTHONPATH=$BLENDER_PYTHONPATH" >> "$GITHUB_ENV"
-          blender -b --python-expr 'import numpy; print("NumPy available in Blender", numpy.__version__)'
+          BLENDER_BASE=/tmp/blender-4.5.17-linux-x64/4.5/python/lib
+          BLENDER_PYVER=$(find "$BLENDER_BASE" -maxdepth 1 -type d -name 'python*' -printf '%f\n' | head -1)
+          test -n "$BLENDER_PYVER" || { echo "Blender embedded Python not found"; exit 1; }
+          echo "PYTHONPATH=$BLENDER_PYTHONPATH:$BLENDER_BASE/$BLENDER_PYVER/site-packages" >> "$GITHUB_ENV"
+          /tmp/blender-4.5.17-linux-x64/blender -b --python-expr 'import numpy, bpy; bpy.ops.import_scene.fbx(filepath="in-this-town/assets/roblox/R15_Block.fbx"); print("Preflight OK: Blender", bpy.app.version_string, "NumPy", numpy.__version__, "FBX objects", len(bpy.context.scene.objects))'
           sudo apt-get install -y -qq fonts-dejavu-core fonts-liberation
           sudo mkdir -p /usr/share/fonts/truetype/msttcorefonts
           sudo ln -sf /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf /usr/share/fonts/truetype/msttcorefonts/seguibl.ttf
@@ -28,6 +35,7 @@ jobs:
           PLANET_CHUNK: 150
           PLANET_COOL: 5
         run: |
+          sed -i 's#"blender":"blender"#"blender":"/tmp/blender-4.5.17-linux-x64/blender"#' config.json
           python3 town/make.py town/stories/cake_lamp.json
       - name: Verify final MP4
         run: |

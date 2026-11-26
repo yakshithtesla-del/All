@@ -206,17 +206,17 @@ export default {
       S.hero.pose({ armL: [90, 20], armR: [105, 22], torso: [0, 0, -5] }); S.chief.pose({ armL: [55, 20], armR: [115, 28] })
       camera([-18, 16, 36], [1, 7, -6], 56)
     } else if (k === 20) {
-      placeHero(-3, 7, 'happy'); placeLio('happy'); showAt(S.chief, -8, 0, -2, 0, 'smile'); showAt(S.rescuer, -4, 0, -4, 0, 'happy')
+      placeHero(-3, 7, 'happy'); placeLio('happy'); showAt(S.chief, -14, 0, 4, 0, 'smile'); showAt(S.rescuer, -4, 0, -4, 0, 'happy')
       S.shieldGiant.visible = true; S.shieldGiant.scale.setScalar(2.9); S.shieldGiant.position.set(1, 0, 1.8); S.shieldGiant.rotation.y = Math.PI
       const walk = cl(q * 1.4); S.rescuer.root.position.x = STAGE_X - 4 + walk * 14; S.rescuer.root.position.z = -4 - walk * 7; S.rescuer.touching = true
       S.chief.pose({ armL: [54, 20], armR: [78, 18] }); S.rescuer.pose({ armL: [74, 20], armR: [82, 16] })
       camera([-19, 17, 39], [2, 7, -8], 56)
     } else if (k === 21) {
       placeHero(-3, 7, 'oh'); placeLio('laugh'); speak(S.hero)
-      S.shieldGiant.visible = true; S.shieldGiant.scale.setScalar(2.9); S.shieldGiant.position.set(1, 0, 1.8)
-      const slide = cl((q - .15) / .7); S.shieldGiant.position.x = 1 - slide * 14; S.shieldGiant.position.z = 1.8 + slide * 10; S.shieldGiant.rotation.z = slide * .08
+      S.shieldGiant.visible = true; S.shieldGiant.scale.setScalar(2.9); S.shieldGiant.position.set(16, 0, 1.8)
+      const slide = cl((q - .15) / .7); S.shieldGiant.position.x = 16 - slide * 5; S.shieldGiant.position.z = 1.8 + slide * 10; S.shieldGiant.rotation.z = slide * .08
       S.hero.pose({ armL: [96, 30], armR: [96, -30], head: [0, 16, 0] }); S.lio.pose({ armL: [80, 25], armR: [80, -25], torso: [-6, 0, 0] })
-      camera([-17, 13, 35], [-2, 5, 1], 56)
+      camera([-8, 15, 37], [6, 7, 2], 56)
     } else if (k === 22) {
       placeHero(-4, 7, 'happy'); placeLio('worried'); speak(S.lio)
       S.lio.pose({ armL: [112, 22], armR: [96, 20], head: [0, -15, 0] })

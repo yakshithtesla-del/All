@@ -488,7 +488,6 @@ def lamp(S, C, a, b):
     # Reveal the cake-lamp prop in a phone-friendly medium close shot.
     show(C["lampcake"], a, b)
     key(C["lampcake_root"], "location", F(a), Vector((-2.0, 8.8, 0.0)))
-    C["lampcake_root"].keyframe_insert("location", frame=F(a))
     S.camera("lamp", (-7.0, -7.0, 8.8), (-2.0, 8.6, 6.1), 33,
              to=(-6.4, -6.0, 8.2))
 

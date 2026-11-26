@@ -307,6 +307,10 @@ function drawInsert(ctx, W, H, I) {
 }
 export function captions(env) {
   const { ctx, W, H, raw, words, story, state } = env
+  // This helper is the scene's own caption renderer. If story.captions is still
+  // true, engine.js draws a second generic caption underneath it. Suppress that
+  // duplicate here so a scene that calls captions() draws captions exactly once.
+  if (story) story.captions = false
   if (state.insert) drawInsert(ctx, W, H, state.insert)
   const edge = (text, x, y, size, fill, lw) => { ctx.font = `700 ${size}px Montserrat`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round'; ctx.shadowColor = 'rgba(0,0,0,0.85)'; ctx.shadowBlur = size * 0.16; ctx.shadowOffsetY = size * 0.04; ctx.strokeStyle = '#0a0706'; ctx.lineWidth = lw; ctx.strokeText(text, x, y); ctx.shadowBlur = 0; ctx.shadowOffsetY = 0; ctx.fillStyle = fill; ctx.fillText(text, x, y) }
   ctx.save()

@@ -8,7 +8,7 @@ import { spawnSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
 import { ffmpegPath } from '../lib/ffmpeg.mjs'
 
-const ROOT = path.dirname(fileURLToPath(import.meta.url))
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const FF = await ffmpegPath().catch(() => 'ffmpeg')
 
 if (spawnSync(FF, ['-version']).status !== 0) {

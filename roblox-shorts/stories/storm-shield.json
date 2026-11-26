@@ -1,0 +1,41 @@
+{
+  "title": "In This Town, Fear Makes a SHIELD",
+  "format": "vertical",
+  "fps": 24,
+  "captions": true,
+  "music": "audio/bg.mp3",
+  "musicVolume": 0.12,
+  "voice": { "provider": "free", "id": "en-US-AnaNeural" },
+  "keys": ["town", "scared", "shield", "fearless", "40", "plate", "giant", "promise", "red socks", "Lio"],
+  "caption": { "words": 2, "y": 0.66 },
+  "places": [
+    { "name": "the snowy ridge lookout", "lines": ["1-24"], "build": "world:meadow", "theme": "snow", "seed": 6319 }
+  ],
+  "beats": [
+    { "line": "In this town, saying I'm scared makes a shield appear.", "style": "town", "scene": "storm-shield" },
+    { "line": "A little fear makes a dinner plate; a real one makes a wall.", "style": "town", "scene": "storm-shield" },
+    { "line": "Our coach admitted he feared bees before the big game.", "style": "town", "scene": "storm-shield" },
+    { "line": "A tiny shield blocked one bee, then blocked the goal.", "style": "town", "scene": "storm-shield" },
+    { "line": "Now everyone wears helmets and says, 'Nothing scares me.'", "style": "town", "scene": "storm-shield" },
+    { "line": "Me? I'm the fearless kid who climbs the lookout stairs.", "style": "town", "scene": "storm-shield" },
+    { "line": "My cousin Lio counts clouds and carries cocoa.", "style": "town", "scene": "storm-shield" },
+    { "line": "He wears bright red socks, even with snow boots.", "style": "town", "scene": "storm-shield" },
+    { "line": "He trusts me to keep every promise.", "style": "town", "scene": "storm-shield" },
+    { "line": "Then a snow squall traps him on the ridge lookout.", "style": "town", "scene": "storm-shield" },
+    { "line": "The bridge is closed, and the rescue line keeps whipping away.", "style": "town", "scene": "storm-shield" },
+    { "line": "The chief says, 'We need 40 calm seconds to cross.'", "style": "town", "scene": "storm-shield" },
+    { "line": "I try, 'I'm scared of the dark.'", "style": "town", "scene": "storm-shield" },
+    { "line": "A shield the size of a plate appears.", "style": "town", "scene": "storm-shield" },
+    { "line": "It blocks one snowflake. The wind steals it downhill.", "style": "town", "scene": "storm-shield" },
+    { "line": "'I'm scared of slipping.' A bigger shield appears.", "style": "town", "scene": "storm-shield" },
+    { "line": "It shelters one rescuer, but the rope still whips away.", "style": "town", "scene": "storm-shield" },
+    { "line": "I'm out of small fears. Lio's red socks flash.", "style": "town", "scene": "storm-shield" },
+    { "line": "'I'm scared I can't keep my promise alone.'", "style": "town", "scene": "storm-shield" },
+    { "line": "A giant shield rises and blocks the gusts.", "style": "town", "scene": "storm-shield" },
+    { "line": "The team crosses, reaches Lio, and guides him down.", "style": "town", "scene": "storm-shield" },
+    { "line": "The shield catches a gust and slides downhill like a sled.", "style": "town", "scene": "storm-shield" },
+    { "line": "'I'm scared too,' Lio says. A second shield appears.", "style": "town", "scene": "storm-shield" },
+    { "line": "The town's helmets now come with tiny shields.", "style": "town", "scene": "storm-shield" }
+  ],
+  "sound": { "bed": "none", "music": -14 }
+}

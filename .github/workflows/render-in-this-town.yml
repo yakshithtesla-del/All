@@ -2,7 +2,6 @@ name: Render In This Town - Cake Lamp
 on:
   workflow_dispatch:
   push:
-    paths: ['in-this-town/**', '.github/workflows/render-in-this-town.yml']
 concurrency:
   group: in-this-town-cake-lamp
   cancel-in-progress: false
@@ -17,11 +16,14 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq blender ffmpeg python3-pip
           python3 -m pip install --break-system-packages -r in-this-town/requirements.txt
+          sudo apt-get install -y -qq fonts-dejavu-core fonts-liberation
+          sudo mkdir -p /usr/share/fonts/truetype/msttcorefonts
+          sudo ln -sf /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf /usr/share/fonts/truetype/msttcorefonts/seguibl.ttf
       - name: Render video with voice, music and SFX
         working-directory: in-this-town
         env:
           PLANET_CHUNK: 150
-          PLANET_COOL: 45
+          PLANET_COOL: 5
         run: |
           python3 town/make.py town/stories/cake_lamp.json
       - name: Verify final MP4

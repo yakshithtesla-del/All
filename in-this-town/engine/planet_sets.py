@@ -191,7 +191,8 @@ def render_settings(sc, pct=100):
     PCT = pct
     sc.render.engine = "BLENDER_EEVEE_NEXT" if "BLENDER_EEVEE_NEXT" in [e.identifier for e in bpy.types.RenderSettings.bl_rna.properties["engine"].enum_items] else "BLENDER_EEVEE"
     ee = sc.eevee
-    for a, v in (("taa_render_samples", 64), ("use_shadows", True), ("use_raytracing", True), ("use_gtao", True)):
+    samples = int(os.environ.get("PLANET_SAMPLES", "16"))
+    for a, v in (("taa_render_samples", samples), ("use_shadows", True), ("use_raytracing", False), ("use_gtao", True)):
         if hasattr(ee, a):
             setattr(ee, a, v)
     sc.render.use_motion_blur = True

@@ -135,6 +135,40 @@ if story.get("set", "town") == "town":            # the kit's textured street, l
 else:
     raise SystemExit(f"unknown set {story.get('set')!r}: this kit has the 'town' set")
 sc.eevee.taa_render_samples = int(story.get("samples", 32))
+# Prefer Cycles CUDA on a Colab T4 when explicitly requested and available; otherwise
+# keep the story's tested EEVEE look and print the actual selected backend.
+GPU_BACKEND = os.environ.get("PLANET_GPU_BACKEND", "auto").upper()
+if GPU_BACKEND in ("AUTO", "CUDA", "OPTIX"):
+    try:
+        import addon_utils
+        addon_utils.enable("cycles", default_set=False, persistent=False)
+        prefs = bpy.context.preferences.addons["cycles"].preferences
+        candidates = (GPU_BACKEND,) if GPU_BACKEND in ("CUDA", "OPTIX") else ("CUDA", "OPTIX")
+        selected = None
+        for backend in candidates:
+            try:
+                prefs.compute_device_type = backend
+                prefs.get_devices()
+                gpu_devices = [d for d in prefs.devices if d.type == backend]
+                if gpu_devices:
+                    for d in prefs.devices:
+                        d.use = d.type != "CPU"
+                    selected = backend
+                    break
+            except Exception as exc:
+                print(f"[gpu] {backend} unavailable: {exc}", flush=True)
+        if selected:
+            sc.render.engine = "CYCLES"
+            sc.cycles.device = "GPU"
+            sc.cycles.samples = int(os.environ.get("PLANET_CYCLES_SAMPLES", "16"))
+            sc.cycles.use_denoising = True
+            print(f"[gpu] Cycles {selected}; devices: " + ", ".join(d.name for d in gpu_devices), flush=True)
+        else:
+            print("[gpu] No Cycles GPU backend available; using EEVEE", flush=True)
+    except Exception as exc:
+        print(f"[gpu] Cycles GPU setup failed; using EEVEE: {exc}", flush=True)
+else:
+    print(f"[gpu] Requested backend {GPU_BACKEND}; EEVEE configured", flush=True)
 sc.render.fps = FPS
 S = Stage()
 C = story_file.build(S)

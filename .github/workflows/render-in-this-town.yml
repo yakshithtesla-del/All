@@ -29,12 +29,24 @@ jobs:
           sudo apt-get install -y -qq fonts-dejavu-core fonts-liberation
           sudo mkdir -p /usr/share/fonts/truetype/msttcorefonts
           sudo ln -sf /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf /usr/share/fonts/truetype/msttcorefonts/seguibl.ttf
+      - name: Verify GPU availability and Cycles CUDA
+        run: |
+          if ! nvidia-smi -L; then
+            echo "No NVIDIA GPU is available on this GitHub-hosted runner. Refusing to claim GPU rendering."
+            exit 1
+          fi
+          /tmp/blender-4.5.17-linux-x64/blender -b --factory-startup --python-expr 'import bpy, addon_utils; addon_utils.enable("cycles", default_set=False, persistent=False); p=bpy.context.preferences.addons["cycles"].preferences; p.compute_device_type="CUDA"; p.get_devices(); print("CUDA_DEVICES", [(d.name,d.type) for d in p.devices]); assert any(d.type=="CUDA" for d in p.devices), "No Cycles CUDA device"'
       - name: Render video with voice, music and SFX
         working-directory: in-this-town
         env:
           PLANET_CHUNK: 150
-          PLANET_COOL: 5
+          PLANET_COOL: 1
+          PLANET_SAMPLES: 16
+          PLANET_GPU_BACKEND: CUDA
+          PLANET_CYCLES_SAMPLES: 16
+          PLANET_FONT: /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
         run: |
+          ulimit -c 0
           sed -i 's#"blender":"blender"#"blender":"/tmp/blender-4.5.17-linux-x64/blender"#' config.json
           python3 town/make.py town/stories/cake_lamp.json
       - name: Verify final MP4
@@ -43,7 +55,7 @@ jobs:
           ffprobe -v error -show_entries format=duration,size:stream=codec_name,width,height,sample_rate,channels -of default=nw=1 in-this-town/town/build/cake_lamp/FINAL.mp4
       - uses: actions/upload-artifact@v4
         with:
-          name: in-this-town-cake-lamp
+          name: in-this-town-cake-lamp-1080x1920
           path: |
             in-this-town/town/build/cake_lamp/FINAL.mp4
             in-this-town/town/build/cake_lamp/FINAL.credits.txt

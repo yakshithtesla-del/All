@@ -1,5 +1,6 @@
 town/build/
 town/out/
+outbox/
 town/voice_ref/*.wav
 town/voice_ref/*.txt
 __pycache__/

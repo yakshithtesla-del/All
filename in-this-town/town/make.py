@@ -54,8 +54,7 @@ def good_frames(frames, w):
 
 
 def render_chunks(story_path, base, scale, resume, timings):
-    """Render in short Blender runs with a rest between them, so the GPU never runs flat out for long; with
-    --resume, frames that are already fine are kept (pick up after a crash)."""
+    """Render resumable short chunks, print progress, and verify that each chunk created frames."""
     st = json.load(open(story_path, encoding="utf-8"))
     fps, nf = int(st.get("fps", 30)), int(round(float(st.get("seconds", 20)) * int(st.get("fps", 30))))
     frames = os.path.join(BUILD, "frames")
@@ -66,10 +65,21 @@ def render_chunks(story_path, base, scale, resume, timings):
     have = good_frames(frames, 1080 * scale // 100)
     t = time.time()
     todo = [c for c in range(0, nf, CHUNK) if any(f not in have for f in range(c, min(nf, c + CHUNK)))]
+    print(f"Render plan: {nf} frames at {fps} fps, {1080 * scale // 100}x{1920 * scale // 100}; "
+          f"{len(todo)} chunks remaining; GPU backend={os.environ.get('PLANET_GPU_BACKEND', 'auto')}", flush=True)
     for k, c in enumerate(todo):
-        print(f"--- 2 render frames {c}-{min(nf, c + CHUNK) - 1} ({k + 1}/{len(todo)})", flush=True)
+        chunk_start = time.time()
+        chunk_end = min(nf, c + CHUNK) - 1
+        print(f"RENDERING chunk {k + 1}/{len(todo)} frames {c}-{chunk_end} "
+              f"({c / fps:.1f}s-{chunk_end / fps:.1f}s)", flush=True)
         subprocess.check_call(base + ["--scale", str(scale), "--from", str(c / fps), "--to", str((min(nf, c + CHUNK) - 1) / fps),
                                "--keep"], cwd=MILO)
+        have = good_frames(frames, 1080 * scale // 100)
+        created = sum(f in have for f in range(c, chunk_end + 1))
+        if created == 0:
+            sys.exit("Blender produced no readable frames for this chunk")
+        print(f"CHUNK COMPLETE {k + 1}/{len(todo)}: {created}/{chunk_end - c + 1} frames "
+              f"in {time.time() - chunk_start:.1f}s", flush=True)
         if k < len(todo) - 1:
             time.sleep(COOL)
     have = good_frames(frames, 1080 * scale // 100)

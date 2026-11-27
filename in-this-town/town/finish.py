@@ -10,7 +10,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 BUILD = os.environ.get("PLANET_BUILD", os.path.join(HERE, "build"))
-FONT = r"C:\Windows\Fonts\seguibl.ttf"   # Segoe UI Black (already on Windows)
+FONT = os.environ.get("PLANET_FONT", r"C:\Windows\Fonts\seguibl.ttf")   # Segoe UI Black (default Windows font)
 
 
 def cards(words, max_words=3, max_chars=15):

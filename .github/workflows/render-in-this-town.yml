@@ -29,26 +29,24 @@ jobs:
           sudo apt-get install -y -qq fonts-dejavu-core fonts-liberation
           sudo mkdir -p /usr/share/fonts/truetype/msttcorefonts
           sudo ln -sf /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf /usr/share/fonts/truetype/msttcorefonts/seguibl.ttf
-      - name: Verify GPU availability and Cycles CUDA
+      - name: Verify CPU Cycles renderer
         run: |
-          if ! nvidia-smi -L; then
-            echo "No NVIDIA GPU is available on this GitHub-hosted runner. Refusing to claim GPU rendering."
-            exit 1
-          fi
-          /tmp/blender-4.5.17-linux-x64/blender -b --factory-startup --python-expr 'import bpy, addon_utils; addon_utils.enable("cycles", default_set=False, persistent=False); p=bpy.context.preferences.addons["cycles"].preferences; p.compute_device_type="CUDA"; p.get_devices(); print("CUDA_DEVICES", [(d.name,d.type) for d in p.devices]); assert any(d.type=="CUDA" for d in p.devices), "No Cycles CUDA device"'
+          /tmp/blender-4.5.17-linux-x64/blender -b --factory-startup --python-expr 'import bpy, addon_utils; addon_utils.enable("cycles", default_set=False, persistent=False); bpy.context.scene.render.engine="CYCLES"; bpy.context.scene.cycles.device="CPU"; print("CPU_RENDER_READY", bpy.app.version_string, bpy.context.scene.render.engine, bpy.context.scene.cycles.device)'
       - name: Render video with voice, music and SFX
         working-directory: in-this-town
         env:
           PLANET_CHUNK: 150
           PLANET_COOL: 1
           PLANET_SAMPLES: 16
-          PLANET_GPU_BACKEND: CUDA
-          PLANET_CYCLES_SAMPLES: 16
+          PLANET_GPU_BACKEND: CPU
+          PLANET_CYCLES_SAMPLES: 8
+          PLANET_CPU_THREADS: 2
+          PLANET_PROGRESS_EVERY: 10
           PLANET_FONT: /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
         run: |
           ulimit -c 0
           sed -i 's#"blender":"blender"#"blender":"/tmp/blender-4.5.17-linux-x64/blender"#' config.json
-          python3 town/make.py town/stories/cake_lamp.json
+          python3 town/make.py town/stories/cake_lamp.json --resume
       - name: Verify final MP4
         run: |
           ls -lh in-this-town/town/build/cake_lamp/FINAL.mp4

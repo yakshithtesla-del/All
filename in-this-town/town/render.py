@@ -168,7 +168,21 @@ if GPU_BACKEND in ("AUTO", "CUDA", "OPTIX"):
     except Exception as exc:
         print(f"[gpu] Cycles GPU setup failed; using EEVEE: {exc}", flush=True)
 else:
-    print(f"[gpu] Requested backend {GPU_BACKEND}; EEVEE configured", flush=True)
+    if GPU_BACKEND == "CPU":
+        import addon_utils
+        addon_utils.enable("cycles", default_set=False, persistent=False)
+        sc.render.engine = "CYCLES"
+        sc.cycles.device = "CPU"
+        sc.cycles.samples = int(os.environ.get("PLANET_CYCLES_SAMPLES", "8"))
+        sc.cycles.use_denoising = True
+        print(f"[render] Cycles CPU; samples={sc.cycles.samples}", flush=True)
+    else:
+        print(f"[gpu] Requested backend {GPU_BACKEND}; EEVEE configured", flush=True)
+if sc.render.engine == "CYCLES":
+    threads = int(os.environ.get("PLANET_CPU_THREADS", "0"))
+    sc.render.threads_mode = "FIXED" if threads > 0 else "AUTO"
+    if threads > 0:
+        sc.render.threads = threads
 sc.render.fps = FPS
 S = Stage()
 C = story_file.build(S)

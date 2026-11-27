@@ -66,7 +66,7 @@ def render_chunks(story_path, base, scale, resume, timings):
     t = time.time()
     todo = [c for c in range(0, nf, CHUNK) if any(f not in have for f in range(c, min(nf, c + CHUNK)))]
     print(f"Render plan: {nf} frames at {fps} fps, {1080 * scale // 100}x{1920 * scale // 100}; "
-          f"{len(todo)} chunks remaining; GPU backend={os.environ.get('PLANET_GPU_BACKEND', 'auto')}", flush=True)
+          f"{len(todo)} chunks remaining; backend={os.environ.get('PLANET_GPU_BACKEND', 'auto')}", flush=True)
     for k, c in enumerate(todo):
         chunk_start = time.time()
         chunk_end = min(nf, c + CHUNK) - 1

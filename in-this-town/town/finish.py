@@ -156,6 +156,8 @@ def main(story_path, preview=False):
     W, H = first.size
     caps = Captions(words, W, H, total)
     n = int(round(total * fps))
+    start_frame = int(os.environ.get("PLANET_FINISH_START", "0"))
+    end_frame = min(n, int(os.environ.get("PLANET_FINISH_END", str(n))))
     out = os.path.join(BUILD, "preview.mp4" if preview else "FINAL.mp4")
     sound = os.path.join(BUILD, "vo.wav")
     if story.get("music") or story.get("sfx"):
@@ -170,12 +172,16 @@ def main(story_path, preview=False):
     flashes = [s["t0"] for s in shots if s["id"] in fx.get("flash_into", [])]
     lines = [speed_lines(W, H, i) for i in range(3)]
     last, missing = None, 0
-    for i in range(n):
+    for i in range(start_frame, end_frame):
         t = i / fps
         fp = os.path.join(BUILD, "frames", f"f_{i:05d}.jpg")
         if os.path.exists(fp):
             fr = np.asarray(Image.open(fp).convert("RGB"))
         else:
+            if last is None:
+                p.stdin.close()
+                p.wait()
+                raise FileNotFoundError(f"first frame {fp} is missing")
             fr, missing = last, missing + 1
         last = fr
         f = grade(fr.astype(np.float32), **story.get("grade", {}))     # per-story look, e.g. more bloom at night

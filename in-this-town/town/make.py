@@ -98,6 +98,22 @@ def main():
     if "--skip-voice" not in sys.argv:
         run("1 voice", [PY, os.path.join(HERE, "voice.py"), story], timings)
     base = [CFG["blender"], "-b", "--factory-startup", "--python", os.path.join(HERE, "render.py"), "--", story]
+    if "--segment" in sys.argv:
+        seg_i = sys.argv.index("--segment")
+        start_f, end_f = int(sys.argv[seg_i + 1]), int(sys.argv[seg_i + 2])
+        st = json.load(open(story, encoding="utf-8"))
+        nf = int(round(float(st.get("seconds", 20)) * int(st.get("fps", 30))))
+        if not (0 <= start_f < end_f <= nf):
+            sys.exit(f"invalid segment bounds {start_f}:{end_f}; expected within 0:{nf}")
+        print(f"RENDER SEGMENT {start_f}-{end_f - 1} of {nf} frames at 1080x1920", flush=True)
+        run("2 segment", base + ["--segment-start", str(start_f), "--segment-end", str(end_f - 1), "--scale", "100"], timings)
+        frames = os.path.join(BUILD, "frames")
+        have = good_frames(frames, 1080)
+        missing = [f for f in range(start_f, end_f) if f not in have]
+        if missing:
+            sys.exit(f"segment incomplete: {len(missing)} frames missing; first {missing[:5]}")
+        print(f"SEGMENT COMPLETE {start_f}-{end_f - 1}: {end_f - start_f} frames", flush=True)
+        return
     if stills:
         run("2 stills", base + ["--stills", "--scale", "35"], timings)
         run("   sheet", [PY, os.path.join(HERE, "sheet.py"), "9"], timings)

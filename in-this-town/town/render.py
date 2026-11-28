@@ -34,6 +34,8 @@ words = json.load(open(os.path.join(BUILD, "words.json"), encoding="utf-8"))["wo
 FPS = int(story.get("fps", 30))
 TOTAL = float(story.get("seconds", 20))
 NF = int(round(TOTAL * FPS))
+SEGMENT_START = max(0, int(opt("--segment-start", 0)))
+SEGMENT_END = min(NF - 1, int(opt("--segment-end", NF - 1)))
 LEAD = float(story.get("cut_lead", 0.07))
 
 
@@ -117,6 +119,7 @@ class Stage:
         """Send everyone else off stage for this shot."""
         a, b = self.times[sid]
         frames = set(range(int(round(a * FPS)), int(round(b * FPS))))
+        frames = {f for f in frames if SEGMENT_START <= f <= SEGMENT_END}
         for n, act in self.cast.items():
             if n not in names:
                 act.hidden |= frames
@@ -207,10 +210,11 @@ if sc.animation_data and sc.animation_data.action:
     for c in sc.animation_data.action.fcurves:
         for k in c.keyframe_points:
             k.interpolation = "CONSTANT"
-print(f"[town] built in {time.time() - t_build:.1f}s; {len(TIMES)} shots, {NF} frames", flush=True)
+print(f"[town] built in {time.time() - t_build:.1f}s; {len(TIMES)} shots, "
+      f"frames {SEGMENT_START}-{SEGMENT_END}/{NF}", flush=True)
 
-sc.frame_start, sc.frame_end = 0, NF - 1
-sc.frame_set(0)
+sc.frame_start, sc.frame_end = SEGMENT_START, SEGMENT_END
+sc.frame_set(SEGMENT_START)
 sc.render.image_settings.file_format = "JPEG"
 sc.render.image_settings.quality = 92
 
@@ -223,7 +227,7 @@ def still(path, f):
 
 warm = os.path.join(BUILD, "_warm.jpg")       # the first render after start can come out blank: throw one away
 sc.render.resolution_percentage = 20
-still(warm, 0)
+still(warm, SEGMENT_START)
 sc.render.resolution_percentage = SCALE
 t0 = time.time()
 if STILLS:
@@ -240,8 +244,8 @@ if STILLS:
 else:
     out = os.path.join(BUILD, "frames")
     os.makedirs(out, exist_ok=True)
-    sc.frame_start = max(0, int(round(T_FROM * FPS)))
-    sc.frame_end = min(NF - 1, int(round(T_TO * FPS)))
+    sc.frame_start = max(SEGMENT_START, int(round(T_FROM * FPS)))
+    sc.frame_end = min(SEGMENT_END, int(round(T_TO * FPS)))
     sc.render.filepath = os.path.join(out, "f_#####")
     sc.render.use_overwrite = "--keep" not in argv       # --keep: skip frames that already exist (make.py checks them)
     bpy.ops.render.render(animation=True)

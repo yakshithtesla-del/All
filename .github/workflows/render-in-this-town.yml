@@ -1,56 +1,161 @@
-name: Render In This Town - Cake Lamp
+name: Render In This Town - Cake Lamp (5 parts)
+
 on:
   workflow_dispatch:
   push:
+    paths:
+      - 'in-this-town/**'
+      - '.github/workflows/render-in-this-town.yml'
+
 concurrency:
   group: in-this-town-cake-lamp
   cancel-in-progress: false
+
 jobs:
-  render:
+  prepare:
     runs-on: ubuntu-latest
-    timeout-minutes: 360
+    timeout-minutes: 30
+    outputs:
+      frames: ${{ steps.meta.outputs.frames }}
+      fps: ${{ steps.meta.outputs.fps }}
+      boundaries: ${{ steps.meta.outputs.boundaries }}
     steps:
       - uses: actions/checkout@v4
-      - name: Install Blender, FFmpeg and Python deps
+      - name: Install voice and media dependencies
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq ffmpeg python3-pip python3-numpy xz-utils libegl1 libgl1 libglx-mesa0 libx11-6 libxrender1 libxi6 libxfixes3 libxkbcommon0 libwayland-client0
-          curl -fsSL https://download.blender.org/release/Blender4.5/blender-4.5.17-linux-x64.tar.xz -o /tmp/blender.tar.xz
-          tar -xf /tmp/blender.tar.xz -C /tmp
-          echo "/tmp/blender-4.5.17-linux-x64" >> "$GITHUB_PATH"
-          echo "BLENDER=/tmp/blender-4.5.17-linux-x64/blender" >> "$GITHUB_ENV"
+          sudo apt-get install -y -qq ffmpeg python3-pip
           python3 -m pip install --break-system-packages -r in-this-town/requirements.txt
-          BLENDER_PYTHONPATH=$(python3 -c "import numpy,os; print(os.path.dirname(os.path.dirname(numpy.__file__)))")
-          BLENDER_BASE=/tmp/blender-4.5.17-linux-x64/4.5/python/lib
-          BLENDER_PYVER=$(find "$BLENDER_BASE" -maxdepth 1 -type d -name 'python*' -printf '%f\n' | head -1)
-          test -n "$BLENDER_PYVER" || { echo "Blender embedded Python not found"; exit 1; }
-          echo "PYTHONPATH=$BLENDER_PYTHONPATH:$BLENDER_BASE/$BLENDER_PYVER/site-packages" >> "$GITHUB_ENV"
-          /tmp/blender-4.5.17-linux-x64/blender -b --python-expr 'import numpy, bpy; bpy.ops.import_scene.fbx(filepath="in-this-town/assets/roblox/R15_Block.fbx"); print("Preflight OK: Blender", bpy.app.version_string, "NumPy", numpy.__version__, "FBX objects", len(bpy.context.scene.objects))'
-          sudo apt-get install -y -qq fonts-dejavu-core fonts-liberation
-          sudo mkdir -p /usr/share/fonts/truetype/msttcorefonts
-          sudo ln -sf /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf /usr/share/fonts/truetype/msttcorefonts/seguibl.ttf
-      - name: Verify CPU Cycles renderer
-        run: |
-          /tmp/blender-4.5.17-linux-x64/blender -b --factory-startup --python-expr 'import bpy, addon_utils; addon_utils.enable("cycles", default_set=False, persistent=False); bpy.context.scene.render.engine="CYCLES"; bpy.context.scene.cycles.device="CPU"; print("CPU_RENDER_READY", bpy.app.version_string, bpy.context.scene.render.engine, bpy.context.scene.cycles.device)'
-      - name: Render video with voice, music and SFX
+      - name: Generate voice and shot timings
         working-directory: in-this-town
         env:
-          PLANET_CHUNK: 150
-          PLANET_COOL: 1
-          PLANET_SAMPLES: 16
-          PLANET_GPU_BACKEND: CPU
-          PLANET_CYCLES_SAMPLES: 8
-          PLANET_CPU_THREADS: 2
-          PLANET_PROGRESS_EVERY: 10
+          PLANET_BUILD: ${{ github.workspace }}/in-this-town/town/build/cake_lamp
+        run: python3 town/voice.py town/stories/cake_lamp.json
+      - name: Calculate 5 frame ranges
+        id: meta
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          s=json.load(open('in-this-town/town/stories/cake_lamp.json'))
+          n=round(float(s['seconds'])*int(s['fps']))
+          fps=int(s['fps'])
+          edges=[round(n*i/5) for i in range(6)]
+          print(f'frames={n}')
+          print(f'fps={fps}')
+          print('boundaries='+','.join(map(str,edges)))
+          print('Total frames:',n,'FPS:',fps,'Ranges:',list(zip(edges,edges[1:])))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cake-lamp-voice-and-timings
+          path: |
+            in-this-town/town/build/cake_lamp/vo.wav
+            in-this-town/town/build/cake_lamp/words.json
+            in-this-town/town/build/cake_lamp/shots.json
+            in-this-town/town/stories/cake_lamp.json
+            in-this-town/town/stories/cake_lamp.upload.txt
+          retention-days: 3
+
+  render-part:
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        part: [0, 1, 2, 3, 4]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: cake-lamp-voice-and-timings
+          path: in-this-town/town/build/cake_lamp
+      - name: Install CPU render dependencies and Blender 4.5.17
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg python3-pip xz-utils libegl1 libgl1 libglx-mesa0 libx11-6 libxrender1 libxi6 libxfixes3 libxkbcommon0 libwayland-client0 fonts-dejavu-core fonts-liberation
+          curl -fsSL https://download.blender.org/release/Blender4.5/blender-4.5.17-linux-x64.tar.xz -o /tmp/blender.tar.xz
+          tar -xf /tmp/blender.tar.xz -C /tmp
+          python3 -m pip install --break-system-packages numpy pillow edge-tts
+          BLENDER_BASE=/tmp/blender-4.5.17-linux-x64/4.5/python/lib
+          BLENDER_PYVER=$(find "$BLENDER_BASE" -maxdepth 1 -type d -name 'python*' -printf '%f\n' | head -1)
+          PYTHONPATH=$(python3 -c "import numpy,os; print(os.path.dirname(os.path.dirname(numpy.__file__)))"):$BLENDER_BASE/$BLENDER_PYVER/site-packages
+          echo "PYTHONPATH=$PYTHONPATH" >> "$GITHUB_ENV"
+          echo 'PLANET_FONT=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf' >> "$GITHUB_ENV"
+          echo 'PLANET_GPU_BACKEND=CPU' >> "$GITHUB_ENV"
+          echo 'PLANET_CYCLES_SAMPLES=8' >> "$GITHUB_ENV"
+          echo 'PLANET_CPU_THREADS=2' >> "$GITHUB_ENV"
+          sudo mkdir -p /usr/share/fonts/truetype/msttcorefonts
+          sudo ln -sf /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf /usr/share/fonts/truetype/msttcorefonts/seguibl.ttf
+      - name: Render assigned frame range on CPU
+        working-directory: in-this-town
+        env:
+          PLANET_BUILD: ${{ github.workspace }}/in-this-town/town/build/cake_lamp
+        run: |
+          python3 - <<'PY'
+          import json, os, subprocess
+          total=int('${{ needs.prepare.outputs.frames }}')
+          part=int('${{ matrix.part }}')
+          a=round(total*part/5)
+          b=round(total*(part+1)/5)
+          print(f'PART {part+1}/5: rendering frames {a}-{b-1} ({b-a} frames), 1080x1920 CPU Cycles',flush=True)
+          subprocess.run(['python3','town/make.py','town/stories/cake_lamp.json','--skip-voice','--segment',str(a),str(b)],check=True)
+          dest=f'town/build/cake_lamp/parts/part{part}.tar.gz'
+          os.makedirs(os.path.dirname(dest),exist_ok=True)
+          # Explicit range archive: only this part's numbered JPEGs.
+          import glob
+          fs=[f'f_{i:05d}.jpg' for i in range(a,b)]
+          subprocess.run(['tar','-czf',dest,'-C','town/build/cake_lamp/frames',*fs],check=True)
+          print(f'PART COMPLETE {part+1}/5: {b-a} frames saved to {dest}',flush=True)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cake-lamp-part-${{ matrix.part }}
+          path: in-this-town/town/build/cake_lamp/parts/part${{ matrix.part }}.tar.gz
+          retention-days: 7
+
+  combine:
+    needs: [prepare, render-part]
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: cake-lamp-part-*
+          path: /tmp/cake-parts
+          merge-multiple: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: cake-lamp-voice-and-timings
+          path: in-this-town/town/build/cake_lamp
+      - name: Install combine dependencies and reconstruct ordered frames
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg python3-pip fonts-dejavu-core fonts-liberation
+          python3 -m pip install --break-system-packages numpy pillow
+          sudo mkdir -p /usr/share/fonts/truetype/msttcorefonts
+          sudo ln -sf /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf /usr/share/fonts/truetype/msttcorefonts/seguibl.ttf
+          mkdir -p in-this-town/town/build/cake_lamp/frames
+          find /tmp/cake-parts -name 'part*.tar.gz' -print -exec tar -xzf {} -C in-this-town/town/build/cake_lamp/frames \;
+          python3 - <<'PY'
+          import json,os
+          s=json.load(open('in-this-town/town/stories/cake_lamp.json'))
+          n=round(float(s['seconds'])*int(s['fps']))
+          d='in-this-town/town/build/cake_lamp/frames'
+          missing=[i for i in range(n) if not os.path.isfile(os.path.join(d,f'f_{i:05d}.jpg'))]
+          print(f'Frames recovered: {n-len(missing)}/{n}')
+          if missing: raise SystemExit(f'Missing {len(missing)} frames; first: {missing[:12]}')
+          PY
+      - name: Finish with narration, music, SFX, captions; verify video
+        working-directory: in-this-town
+        env:
+          PLANET_BUILD: ${{ github.workspace }}/in-this-town/town/build/cake_lamp
           PLANET_FONT: /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
         run: |
-          ulimit -c 0
-          sed -i 's#"blender":"blender"#"blender":"/tmp/blender-4.5.17-linux-x64/blender"#' config.json
-          python3 town/make.py town/stories/cake_lamp.json --resume
-      - name: Verify final MP4
-        run: |
-          ls -lh in-this-town/town/build/cake_lamp/FINAL.mp4
-          ffprobe -v error -show_entries format=duration,size:stream=codec_name,width,height,sample_rate,channels -of default=nw=1 in-this-town/town/build/cake_lamp/FINAL.mp4
+          python3 town/finish.py town/stories/cake_lamp.json
+          ffprobe -v error -show_entries format=duration,size:stream=codec_name,width,height,sample_rate,channels -of default=nw=1 town/build/cake_lamp/FINAL.mp4
       - uses: actions/upload-artifact@v4
         with:
           name: in-this-town-cake-lamp-1080x1920

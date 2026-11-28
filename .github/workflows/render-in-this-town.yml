@@ -99,8 +99,7 @@ jobs:
           mkdir -p town/build/cake_lamp
           cp /tmp/cake-voice/build/cake_lamp/vo.wav town/build/cake_lamp/vo.wav
           cp /tmp/cake-voice/build/cake_lamp/words.json town/build/cake_lamp/words.json
-          cp /tmp/cake-voice/build/cake_lamp/shots.json town/build/cake_lamp/shots.json
-          ls -lh town/build/cake_lamp/{words.json,shots.json,vo.wav}
+          ls -lh town/build/cake_lamp/{words.json,vo.wav}
           python3 - <<'PY'
           import json, os, subprocess
           total=int('${{ needs.prepare.outputs.frames }}')

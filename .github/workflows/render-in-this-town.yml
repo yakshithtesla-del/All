@@ -97,9 +97,9 @@ jobs:
           sed -i 's#"blender":"blender"#"blender":"/tmp/blender-4.5.17-linux-x64/blender"#' config.json
           find /tmp/cake-voice -maxdepth 3 -type f -printf '%p %s bytes\n'
           mkdir -p town/build/cake_lamp
-          cp /tmp/cake-voice/cake_lamp/vo.wav town/build/cake_lamp/vo.wav
-          cp /tmp/cake-voice/cake_lamp/words.json town/build/cake_lamp/words.json
-          cp /tmp/cake-voice/cake_lamp/shots.json town/build/cake_lamp/shots.json
+          cp /tmp/cake-voice/build/cake_lamp/vo.wav town/build/cake_lamp/vo.wav
+          cp /tmp/cake-voice/build/cake_lamp/words.json town/build/cake_lamp/words.json
+          cp /tmp/cake-voice/build/cake_lamp/shots.json town/build/cake_lamp/shots.json
           ls -lh town/build/cake_lamp/{words.json,shots.json,vo.wav}
           python3 - <<'PY'
           import json, os, subprocess

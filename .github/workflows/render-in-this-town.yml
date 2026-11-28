@@ -68,7 +68,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: cake-lamp-voice-and-timings
-          path: .
+          path: in-this-town/town/build/cake_lamp
       - name: Install CPU render dependencies and Blender 4.5.17
         run: |
           sudo apt-get update -qq
@@ -92,15 +92,6 @@ jobs:
           PLANET_BUILD: ${{ github.workspace }}/in-this-town/town/build/cake_lamp
         run: |
           sed -i 's#"blender":"blender"#"blender":"/tmp/blender-4.5.17-linux-x64/blender"#' config.json
-          find . -name words.json -o -name shots.json -o -name vo.wav
-          mkdir -p town/build/cake_lamp
-          WORDS=$(find . -name words.json | head -1)
-          SHOTS=$(find . -name shots.json | head -1)
-          VOICE=$(find . -name vo.wav | head -1)
-          test -n "$WORDS" && test -n "$SHOTS" && test -n "$VOICE"
-          cp "$WORDS" town/build/cake_lamp/words.json
-          cp "$SHOTS" town/build/cake_lamp/shots.json
-          cp "$VOICE" town/build/cake_lamp/vo.wav
           ls -lh town/build/cake_lamp/{words.json,shots.json,vo.wav}
           python3 - <<'PY'
           import json, os, subprocess

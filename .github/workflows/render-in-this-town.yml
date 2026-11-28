@@ -49,9 +49,7 @@ jobs:
         with:
           name: cake-lamp-voice-and-timings
           path: |
-            in-this-town/town/build/cake_lamp/vo.wav
-            in-this-town/town/build/cake_lamp/words.json
-            in-this-town/town/build/cake_lamp/shots.json
+            in-this-town/town/build/cake_lamp/**
             in-this-town/town/stories/cake_lamp.json
             in-this-town/town/stories/cake_lamp.upload.txt
           retention-days: 3
@@ -70,7 +68,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: cake-lamp-voice-and-timings
-          path: in-this-town/town/build/cake_lamp
+          path: .
       - name: Install CPU render dependencies and Blender 4.5.17
         run: |
           sudo apt-get update -qq
@@ -130,7 +128,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: cake-lamp-voice-and-timings
-          path: in-this-town/town/build/cake_lamp
+          path: .
       - name: Install combine dependencies and reconstruct ordered frames
         run: |
           sudo apt-get update -qq

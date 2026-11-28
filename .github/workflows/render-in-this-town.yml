@@ -43,8 +43,8 @@ jobs:
           print(f'frames={n}')
           print(f'fps={fps}')
           print('boundaries='+','.join(map(str,edges)))
-          print('Total frames:',n,'FPS:',fps,'Ranges:',list(zip(edges,edges[1:])))
           PY
+          echo "Split into five segments: $(cat "$GITHUB_OUTPUT" | tr '\n' ' ')"
       - uses: actions/upload-artifact@v4
         with:
           name: cake-lamp-voice-and-timings
